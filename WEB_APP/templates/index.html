@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Name Matching Model</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .drag-drop-area {
+      @apply border-2 border-dashed border-gray-400 rounded-lg p-6 text-center cursor-pointer select-none text-gray-500 font-semibold transition-colors;
+    }
+    .drag-drop-area.dragover {
+      @apply bg-blue-100 border-blue-500 text-blue-600;
+    }
+    /* For focus outline on keyboard nav */
+    .drag-drop-area:focus {
+      outline: 2px solid #3b82f6;
+      outline-offset: 2px;
+    }
+  </style>
+</head>
+<body class="bg-gray-50 min-h-screen flex items-center justify-center p-4">
+  <div class="bg-white max-w-3xl w-full rounded-lg shadow-lg p-8">
+    <img src="{{ url_for('static', filename='multiplier_logo.png') }}" alt="" class="h-[50px] mb-6 mx-auto">
+    <h1 class="text-3xl font-bold mb-6 text-center text-gray-800">Name Matching Model</h1>
+
+    <!-- Tabs -->
+    <div class="mb-6 border-b border-gray-200">
+      <nav class="flex space-x-4" aria-label="Tabs" id="tabsNav">
+        <button
+          class="tab-button text-blue-600 border-b-2 border-blue-600 py-2 px-4 font-semibold focus:outline-none"
+          data-tab="train"
+          aria-selected="true"
+          role="tab"
+          id="train-tab"
+        >
+          Train Model
+        </button>
+        <button
+          class="tab-button text-gray-600 hover:text-blue-600 border-b-2 border-transparent py-2 px-4 font-semibold focus:outline-none"
+          data-tab="test"
+          aria-selected="false"
+          role="tab"
+          id="test-tab"
+        >
+          Test Model
+        </button>
+      </nav>
+    </div>
+
+    <!-- Tab Contents -->
+    <div>
+      <!-- Train Tab -->
+      <section
+        id="train"
+        role="tabpanel"
+        aria-labelledby="train-tab"
+        class="tab-content"
+      >
+        <form id="trainForm" class="space-y-4" novalidate>
+          <label for="trainFile" class="block text-gray-700 font-semibold mb-1">Upload Training Data (CSV)</label>
+         <!-- Drag & Drop Area -->
+<div
+  id="trainDropArea"
+  tabindex="0"
+  class="border-2 border-dashed border-gray-400 rounded-lg p-6 text-center cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-600 transition-all hover:border-blue-500"
+>
+  <!-- Upload Icon -->
+  <div class="flex justify-center mb-3">
+     <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+      xmlns:xlink="http://www.w3.org/1999/xlink" width="64px" height="64px"
+      viewBox="0 0 42 32" enable-background="new 0 0 42 32" xml:space="preserve">
+      <g>
+        <path fill="#828282"
+          d="M33.958,12.988C33.531,6.376,28.933,0,20.5,0C12.787,0,6.839,5.733,6.524,13.384
+            C2.304,14.697,0,19.213,0,22.5C0,27.561,4.206,32,9,32h6.5c0.276,0,0.5-0.224,0.5-0.5S15.776,31,15.5,31H9
+            c-4.262,0-8-3.972-8-8.5C1,19.449,3.674,14,9,14h1.5c0.276,0,0.5-0.224,0.5-0.5S10.776,13,10.5,13H9
+            c-0.509,0-0.99,0.057-1.459,0.139C7.933,7.149,12.486,1,20.5,1C29.088,1,33,7.739,33,14v1.5c0,0.276,0.224,0.5,0.5,0.5
+            s0.5-0.224,0.5-0.5V14c0-0.003,0-0.006,0-0.009c3.019,0.331,7,3.571,7,8.509c0,3.826-3.691,8.5-8,8.5h-7.5
+            c-3.238,0-4.5-1.262-4.5-4.5V12.783l4.078,4.07C25.176,16.951,25.304,17,25.432,17s0.256-0.049,0.354-0.146
+            c0.195-0.195,0.195-0.513,0-0.707l-4.461-4.452c-0.594-0.592-1.055-0.592-1.648,0l-4.461,4.452c-0.195,0.194-0.195,0.512,0,0.707
+            s0.512,0.195,0.707,0L20,12.783V26.5c0,3.804,1.696,5.5,5.5,5.5H33c4.847,0,9-5.224,9-9.5C42,17.333,37.777,13.292,33.958,12.988z" />
+      </g>
+    </svg>
+  </div>
+
+  <!-- Instructions -->
+  <p class="text-gray-600">
+    Drag & drop your <strong>training</strong> CSV file here, or click to select
+  </p>
+
+  <!-- Selected File Name -->
+  <p id="trainFileName" class="mt-2 text-sm text-blue-600 font-medium"></p>
+
+  <!-- Hidden File Input -->
+  <input
+    type="file"
+    id="trainFile"
+    accept=".csv"
+    class="hidden"
+  />
+</div>
+
+          <button
+            type="submit"
+            class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-md transition-colors"
+          >
+            Train Model
+          </button>
+        </form>
+        <div id="trainingOutput" class="mt-6 p-4 bg-white rounded-md shadow-md hidden">
+          <h3 class="text-lg font-semibold mb-2 text-gray-700">Training Output:</h3>
+          <pre id="trainingProgress" class="whitespace-pre-wrap text-gray-900 max-h-64 overflow-y-auto"></pre>
+        </div>
+      </section>
+
+      <!-- Test Tab -->
+      <section
+        id="test"
+        role="tabpanel"
+        aria-labelledby="test-tab"
+        class="tab-content hidden"
+      >
+        <form id="testForm" class="space-y-4" novalidate>
+          <label for="testFile" class="block text-gray-700 font-semibold mb-1">Upload Test Data (CSV)</label>
+          <!-- <div id="testDropArea" tabindex="0" class="drag-drop-area relative">
+            Drag & Drop file here or click to browse
+            <input
+              type="file"
+              id="testFile"
+              name="test_file"
+              accept=".csv"
+              class="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+              required
+            />
+          </div> -->
+          <!-- <p id="testFileName" class="text-gray-800 font-medium mt-1 min-h-[1.25rem]"></p> -->
+           <!-- Drag & Drop Area -->
+<div
+  id="testDropArea"
+  tabindex="0"
+  class="border-2 border-dashed border-gray-400 rounded-lg p-6 text-center cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-600 transition-all hover:border-blue-500"
+>
+  <!-- Upload Icon -->
+  <div class="flex justify-center mb-3">
+     <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+      xmlns:xlink="http://www.w3.org/1999/xlink" width="64px" height="64px"
+      viewBox="0 0 42 32" enable-background="new 0 0 42 32" xml:space="preserve">
+      <g>
+        <path fill="#828282"
+          d="M33.958,12.988C33.531,6.376,28.933,0,20.5,0C12.787,0,6.839,5.733,6.524,13.384
+            C2.304,14.697,0,19.213,0,22.5C0,27.561,4.206,32,9,32h6.5c0.276,0,0.5-0.224,0.5-0.5S15.776,31,15.5,31H9
+            c-4.262,0-8-3.972-8-8.5C1,19.449,3.674,14,9,14h1.5c0.276,0,0.5-0.224,0.5-0.5S10.776,13,10.5,13H9
+            c-0.509,0-0.99,0.057-1.459,0.139C7.933,7.149,12.486,1,20.5,1C29.088,1,33,7.739,33,14v1.5c0,0.276,0.224,0.5,0.5,0.5
+            s0.5-0.224,0.5-0.5V14c0-0.003,0-0.006,0-0.009c3.019,0.331,7,3.571,7,8.509c0,3.826-3.691,8.5-8,8.5h-7.5
+            c-3.238,0-4.5-1.262-4.5-4.5V12.783l4.078,4.07C25.176,16.951,25.304,17,25.432,17s0.256-0.049,0.354-0.146
+            c0.195-0.195,0.195-0.513,0-0.707l-4.461-4.452c-0.594-0.592-1.055-0.592-1.648,0l-4.461,4.452c-0.195,0.194-0.195,0.512,0,0.707
+            s0.512,0.195,0.707,0L20,12.783V26.5c0,3.804,1.696,5.5,5.5,5.5H33c4.847,0,9-5.224,9-9.5C42,17.333,37.777,13.292,33.958,12.988z" />
+      </g>
+    </svg>
+  </div>
+
+  <!-- Instructions -->
+  <p class="text-gray-600">
+    Drag & drop your <strong>testing</strong> CSV file here, or click to select
+  </p>
+
+  <!-- Selected File Name -->
+  <p id="testFileName" class="mt-2 text-sm text-blue-600 font-medium"></p>
+
+  <!-- Hidden File Input -->
+  <input
+    type="file"
+    id="testFile"
+    accept=".csv"
+    class="hidden"
+  />
+</div>
+
+          <button
+            type="submit"
+            class="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-3 rounded-md transition-colors"
+          >
+            Test Model
+          </button>
+        </form>
+        <div id="testingOutput" class="mt-6 p-4 bg-white rounded-md shadow-md hidden">
+          <h3 class="text-lg font-semibold mb-2 text-gray-700">Testing Output:</h3>
+          <pre id="testingProgress" class="whitespace-pre-wrap text-gray-900 max-h-64 overflow-y-auto"></pre>
+        </div>
+        <div id="downloadSection" class="mt-4 hidden">
+          <h3 class="text-lg font-semibold mb-2 text-gray-700">Download Results:</h3>
+          <div id="downloadLinks" class="flex flex-wrap gap-3"></div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <!-- <script src="https://cdn.socket.io/4.7.1/socket.io.min.js" integrity="sha384-..." crossorigin="anonymous"></script> -->
+</body>
+</html>
