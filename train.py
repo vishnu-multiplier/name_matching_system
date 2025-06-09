@@ -21,28 +21,46 @@ logger = logging.getLogger(__name__)
 tqdm.pandas()
 
 def clean_name(name):
-    """Clean and normalize a name string."""
+    """Cleans and normalizes names by removing titles, professions, and location phrases."""
     if pd.isnull(name):
         return ""
 
     name = name.lower()
     name = re.sub(r'\.(?=\w)', '. ', name)
 
-    prefixes = ['dr', 'mr', 'mrs', 'ms', 'miss', 'prof', 'sir', 'madam', 'shri', 'smt', 'doctor', 'professor']
+    # Step 1: Remove common name prefixes
+    prefixes = {'dr', 'mr', 'mrs', 'ms', 'miss', 'prof', 'sir', 'madam', 'shri', 'smt', 'doctor', 'professor'}
     words = name.split()
-    while words and words[0].strip('.') in prefixes:
+    while words and words[0].rstrip('.') in prefixes:
         words.pop(0)
     name = ' '.join(words)
 
-    name = re.sub(r'\b([a-z])\.', r'\1', name)
-    name = re.sub(r'\b([a-z]{2,3})\b', lambda m: ' '.join(m.group(1)) if len(m.group(1)) <= 3 else m.group(1), name)
+    # Step 2: Remove pattern-based profession + location
+    profession_keywords = [
+        'doctor', 'surgeon', 'dentist', 'physician', 'consultant',
+        'orthopedic', 'cardiologist', 'neurologist', 'pediatrician','pulmonologist',
+        'dermatologist', 'psychiatrist', 'ophthalmologist', 'ent specialist',
+        'urologist', 'gastroenterologist', 'oncologist', 'gynecologist'
+    ]
 
-    name = re.sub(r'[^a-z\s]', '', name)
+    # Remove patterns like 'doctor in delhi', 'surgeon from pune'
+    for prof in profession_keywords:
+        name = re.sub(rf'{prof}\s+(in|from|at)\s+\w+', '', name)
+        name = re.sub(rf'{prof}\s+\w+', '', name)  # 'surgeon delhi'
+        name = re.sub(rf'\b{prof}\b', '', name)    # lone profession
+
+    # Step 3: Normalize remaining text
+    name = re.sub(r'\b([a-z])\.', r'\1', name)  # A. → A
+    name = re.sub(r"[^a-z\s'-]", '', name)
     name = re.sub(r'\s+', ' ', name).strip()
 
+    # Step 4: Deduplicate consecutive words
     tokens = name.split()
-    deduped_tokens = [t for i, t in enumerate(tokens) if i == 0 or t != tokens[i - 1]]
-    return ' '.join(deduped_tokens)
+    final_tokens = [t for i, t in enumerate(tokens) if i == 0 or t != tokens[i - 1]]
+
+    return ' '.join(final_tokens)
+
+
 
 def longest_common_substring(s1, s2):
     m = [[0]*(1+len(s2)) for _ in range(1+len(s1))]
@@ -160,7 +178,7 @@ if __name__ == "__main__":
         # Evaluate
         y_pred = model.predict(X_val)
         logger.info(f"Accuracy: {accuracy_score(y_val, y_pred)}")
-        logger.info("\nClassification Report:\n" + classification_report(y_val, y_pred))
+        logger.info(f"\nClassification Report:\n{classification_report(y_val, y_pred)}")
 
         # Save all models and feature list
         logger.info("Saving models...")
