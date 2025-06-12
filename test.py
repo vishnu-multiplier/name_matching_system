@@ -119,7 +119,8 @@ def predict_matches(df, model, tfidf, sbert, features):
         df = compute_features(df, tfidf, sbert)
         
         logger.info("Making predictions...")
-        X = df[features]
+
+        X = df[features].values  
         predictions = model.predict(X)
         probabilities = model.predict_proba(X)[:, 1]
         
@@ -133,13 +134,13 @@ def predict_matches(df, model, tfidf, sbert, features):
 
 def separate_results(df):
     """Separate results into matched and unmatched names."""
+    
     try:
         logger.info("Separating results...")
         matched = df[df['predicted_match'] == 1].copy()
         unmatched = df[df['predicted_match'] == 0].copy()
-        
-        logger.info(f"Found {len(matched)} matches and {len(unmatched)} non-matches")
-        return matched, unmatched
+        message = (f"Found {len(matched)} matches and {len(unmatched)} non-matches")
+        return matched, unmatched, message
     except Exception as e:
         logger.error(f"Error separating results: {e}")
         raise
@@ -161,7 +162,7 @@ def main():
         results_df.to_csv("new_data_output.csv", index=False)
         
         # Separate and save matched/unmatched results
-        matched, unmatched = separate_results(results_df)
+        matched, unmatched, message = separate_results(results_df)
         matched.to_csv("predicted_1.csv", index=False)
         unmatched.to_csv("predicted_0.csv", index=False)
         

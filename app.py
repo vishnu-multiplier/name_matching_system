@@ -7,6 +7,7 @@ from werkzeug.utils import secure_filename
 from train import prepare_data, train_model
 from test import load_models, predict_matches, separate_results
 
+
 # Setup logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
@@ -58,7 +59,7 @@ def train_model_route():
             return jsonify({"error": "No file selected"}), 400
 
         # Save uploaded file
-        filename = secure_filename(file.filename)
+        filename = secure_filename(str(file.filename)) if file.filename else ""
         filepath = os.path.join(UPLOAD_FOLDER, filename)
         file.save(filepath)
         logger.info(f"Training file saved to: {filepath}")
@@ -117,11 +118,11 @@ def test_model_route():
             return jsonify({"error": "No file uploaded"}), 400
         
         file = request.files['test_file']
-        if file.filename == '':
+        if not file.filename or file.filename == '':
             return jsonify({"error": "No file selected"}), 400
 
         # Save uploaded file
-        filename = secure_filename(file.filename)
+        filename = secure_filename(str(file.filename))
         filepath = os.path.join(UPLOAD_FOLDER, filename)
         file.save(filepath)
         logger.info(f"Test file saved to: {filepath}")
@@ -151,12 +152,14 @@ def test_model_route():
             results_df.to_csv(results_path, index=False)
             
             # Separate and save matched/unmatched results
-            matched, unmatched = separate_results(results_df)
+            matched, unmatched, message = separate_results(results_df)
             matched.to_csv(os.path.join(SEPARATED_FOLDER, 'predicted_1.csv'), index=False)
-            unmatched.to_csv(os.path.join(SEPARATED_FOLDER, 'predicted_0.csv'), index=False)
+            unmatched.to_csv(os.path.join(SEPARATED_FOLDER, 'predicted_0.csv'), index=False) 
+            download_merged_names()
+
             
             return jsonify({
-                "message": "Testing completed successfully!",
+                "message": "Done!, " + message,
                 "status": "success",
                 "downloads": get_available_downloads()
             }), 200
