@@ -1,74 +1,149 @@
 # Name Matching System
 
-A web-based system for matching and comparing names using machine learning and various string similarity metrics.
+A secure, web-based system that intelligently compares and matches names using machine learning and multiple string similarity algorithms. Built to streamline entity resolution tasks for test and training data with instant feedback and downloadable results.
 
-## Features
+> ✅ **Created by Banavath Vishnu for Multiplier AI**
 
-- Web interface for easy file upload and processing
-- Multiple similarity metrics:
-  - TF-IDF cosine similarity
-  - SBERT embeddings
-  - Jaro-Winkler similarity
-  - Levenshtein distance
-  - Soundex and Metaphone phonetic matching
-  - Token set ratio
-  - Longest common substring
-  - Jaccard similarity
-  - N-gram overlap
-- XGBoost classifier for final predictions
-- Progress feedback and error handling
-- Automatic results download
+---
 
-## Setup
+## 🚀 Features
 
-1. Create a virtual environment (recommended):
+* **Interactive Web Interface**
+  Upload CSV files, view detailed similarity metrics, and download results effortlessly.
+
+* **Dual Dataset Support**
+
+  * **Test Dataset Tab**: For prediction
+  * **Training Dataset Tab**: For exploring training data (requires login)
+
+* **Rich Similarity Metrics**
+
+  * TF-IDF Cosine Similarity
+  * SBERT Embeddings
+  * Jaro-Winkler Distance
+  * Levenshtein Distance
+  * Soundex & Metaphone
+  * Token Set Ratio
+  * Longest Common Substring
+  * Jaccard Similarity
+  * N-gram Overlap
+
+* **Pre-Trained ML Model (XGBoost)**
+  Instant match prediction with confidence scores—no training required.
+
+* **Real-time Feedback**
+  Progress bar, error handling, and automatic results download.
+
+* **Secure Access for Training Dataset**
+  Login-protected interface for accessing and visualizing training data.
+
+---
+
+## 🔐 Training Dataset Access
+
+To view the **Training Dataset** tab:
+
+* **Username**: `admin`
+* **Password**: `admin`
+
+---
+
+## ⚙️ Setup Instructions
+
+### 1. Create a Virtual Environment
+
 ```bash
 python -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
 ```
 
-2. Install dependencies:
+### 2. Install Dependencies
+
 ```bash
 pip install -r requirements.txt
 ```
 
-3. Train the model:
-```bash
-python train.py
-```
+### 3. Start the Application
 
-4. Run the web application:
 ```bash
 python app.py
 ```
 
-5. Open your browser and navigate to `http://localhost:5000`
+Then open your browser at:
+👉 **[http://127.0.0.1:5000/](http://127.0.0.1:5000/)**
 
-## Usage
+---
 
-1. Prepare your data:
-   - Training CSV should contain columns: 'name1', 'name2', 'is_match'
-   - Test CSV should contain columns: 'name1', 'name2'
+## 📄 Usage Guide
 
-2. Upload files:
-   - Click "Choose File" to select your training and test CSV files
-   - Click "Process Files" to start the matching process
+### ✅ Test Dataset Format
 
-3. Results:
-   - The system will process the files and automatically download the results
-   - Results CSV will contain original columns plus:
-     - 'predicted_match': 1 if names match, 0 if they don't
-     - 'match_probability': Probability of match (0-1)
+CSV file **must contain** the following columns:
 
-## File Structure
+* `record_id`
+* `name1`
+* `name2`
+* `url`
 
-- `app.py`: Flask web application
-- `train.py`: Model training and feature computation
-- `templates/`: HTML templates
-- `uploads/`: Temporary storage for uploaded files
-- `results/`: Storage for processed results
-- `models/`: Storage for trained models
+### ✅ Training Dataset Format
 
-## Requirements
+CSV file **must contain**:
 
-See `requirements.txt` for full list of dependencies. 
+* `name1`
+* `name2`
+* `is_match`
+
+> ⚠️ **Note:** Matching is **strictly case-sensitive and whitespace-sensitive**. Ensure input is clean and standardized.
+
+---
+
+### 📥 How to Use
+
+1. Open the application in your browser.
+2. Navigate to the appropriate tab:
+
+   * **Test Dataset** for prediction
+   * **Training Dataset** (login required) for inspection
+3. Upload your CSV file.
+4. Click **“Process Files”**.
+5. View similarity metrics and download the results file.
+
+**Output CSV includes**:
+
+* All original columns
+* `predicted_match`: 1 or 0
+* `match_probability`: Confidence score between 0 and 1
+
+---
+
+## 📁 Project Structure
+
+```
+.
+├── app.py             # Flask web server
+├── templates/         # HTML frontend templates
+├── uploads/           # Temporary file storage
+├── results/           # Processed output files
+├── models/            # Pre-trained model files
+└── requirements.txt   # Python dependencies
+```
+
+---
+
+## 📦 Dependencies
+
+Install all required packages:
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+## 👤 Author
+
+Developed by **Banavath Vishnu**
+For **Multiplier AI**
+[LinkedIn](https://www.linkedin.com/in/banavath-vishnu) • [GitHub](https://github.com/Banavath-Vishnu)
+
+---
