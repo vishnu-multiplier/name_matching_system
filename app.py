@@ -21,6 +21,15 @@ SEPARATED_FOLDER = 'seperated'
 CLEANED_FOLDER = 'cleaned'
 MODELS_FOLDER = 'models'
 
+
+# Folders to clear cache files
+FOLDERS_TO_CLEAR = [
+    "uploads",
+    "seperated",
+    "results",
+    "cleaned"
+]
+
 # Create required directories
 for folder in [UPLOAD_FOLDER, RESULT_FOLDER, SEPARATED_FOLDER, CLEANED_FOLDER, MODELS_FOLDER]:
     os.makedirs(folder, exist_ok=True)
@@ -177,6 +186,24 @@ def test_model_route():
             "error": str(e),
             "status": "error"
         }), 500
+
+
+@app.route('/clear_cache', methods=['GET', 'POST'])
+def clear_files():
+    try:
+        for folder in FOLDERS_TO_CLEAR:
+            folder_path = os.path.abspath(folder)  # Converts to full path
+            if os.path.exists(folder_path):
+                for filename in os.listdir(folder_path):
+                    file_path = os.path.join(folder_path, filename)
+                    if os.path.isfile(file_path):
+                        os.remove(file_path)
+            else:
+                print(f"Folder not found: {folder_path}")
+        return jsonify({"status": "success", "message": "Cache cleared"}), 200
+    except Exception as e:
+        return jsonify({"status": "error", "message": str(e)}), 500
+
 
 @app.route('/download_complete_results')
 def download_complete_results():

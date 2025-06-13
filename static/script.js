@@ -88,7 +88,7 @@ document.getElementById('trainForm').addEventListener('submit', async e => {
 
   const trainFileInput = document.getElementById('trainFile');
   if (trainFileInput.files.length === 0) {
-    alert('Please select a training CSV file.');
+    showToast('Please select a training CSV file.', 'information');
     return;
   }
 
@@ -132,7 +132,7 @@ document.getElementById('testForm').addEventListener('submit', async e => {
 
   const testFileInput = document.getElementById('testFile');
   if (testFileInput.files.length === 0) {
-    alert('Please select a test CSV file.');
+    showToast('Please select a test CSV file.','information');
     return;
   }
 
@@ -193,6 +193,23 @@ document.getElementById('testForm').addEventListener('submit', async e => {
 });
 
 
+document.getElementById('clearCacheButton').addEventListener('click', function() {
+  
+    fetch('/clear_cache', { method: 'GET' })
+      .then(response => response.json())
+      .then(data => {
+        if (data.status === 'success') {
+          showToast(data.message, 'success');
+        } else {
+          showToast(data.message, 'danger');
+        }
+      })
+      .catch(error => {
+        console.error('Error clearing cache:', error);
+        showToast('An error occurred while clearing the cache.','danger');
+      });
+  
+})
 
 
     // Track login state for train tab
@@ -254,3 +271,47 @@ document.getElementById('testForm').addEventListener('submit', async e => {
       });
     });
 
+
+
+  // Custom Toast Notification
+
+let icon = {
+    success:
+    '<span class="material-symbols-outlined">task_alt</span>',
+    danger:
+    '<span class="material-symbols-outlined">error</span>',
+    warning:
+    '<span class="material-symbols-outlined">warning</span>',
+    info:
+    '<span class="material-symbols-outlined">info</span>',
+};
+
+const showToast = (
+    message,
+    toastType,
+    duration = 5000) => {
+    if (
+        !Object.keys(icon).includes(toastType))
+        toastType = "info";
+
+    let box = document.createElement("div");
+    box.classList.add(
+        "toast", `toast-${toastType}`);
+    box.innerHTML = ` <div class="toast-content-wrapper">
+                      <div class="toast-icon">
+                      ${icon[toastType]}
+                      </div>
+                      <div class="toast-message">${message}</div>
+                      <div class="toast-progress"></div>
+                      </div>`;
+    duration = duration || 5000;
+    box.querySelector(".toast-progress").style.animationDuration =
+            `${duration / 1000}s`;
+
+    let toastAlready = 
+        document.body.querySelector(".toast");
+    if (toastAlready) {
+        toastAlready.remove();
+    }
+
+    document.body.appendChild(box)};

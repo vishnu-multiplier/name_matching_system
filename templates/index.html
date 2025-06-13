@@ -3,23 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Name Matching Model</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='favicon/apple-touch-icon.png') }}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='favicon/favicon-32x32.png') }}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='favicon/favicon-16x16.png') }}">
+  <link rel="stylesheet"href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <title>Name Matching Model - MULTIPLIER AI</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
   <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    .drag-drop-area {
-      @apply border-2 border-dashed border-gray-400 rounded-lg p-6 text-center cursor-pointer select-none text-gray-500 font-semibold transition-colors;
-    }
-    .drag-drop-area.dragover {
-      @apply bg-blue-100 border-blue-500 text-blue-600;
-    }
-    /* For focus outline on keyboard nav */
-    .drag-drop-area:focus {
-      outline: 2px solid #874a8e;
-      outline-offset: 2px;
-    }
-  </style>
 </head>
 <body class="bg-gray-50 min-h-screen flex items-center justify-center p-4">
+  
+    <div class="toast-overlay" 
+         id="toast-overlay"></div>
 
   <div class="bg-white max-w-3xl w-full rounded-lg shadow-lg p-8">
     <img src="{{ url_for('static', filename='multiplier_logo.png') }}" alt="" class="h-[50px] mb-6 mx-auto">
@@ -27,7 +22,8 @@
 
     <!-- Tabs -->
     <div class="mb-6 border-b border-gray-200">
-      <nav class="flex space-x-4" aria-label="Tabs" id="tabsNav">
+      <nav class="flex space-x-4 justify-between" aria-label="Tabs" id="tabsNav">
+        <div>
         <button
           class="tab-button text-blue-600 border-b-2 border-blue-600 py-2 px-4 font-semibold focus:outline-none"
           data-tab="train"
@@ -46,7 +42,13 @@
         >
           Test Model
         </button>
+        </div>
+        <button 
+        class="text-xs font-semibold my-1 bg-[#f8f8ff] border border-[#f8f8ff] px-4 rounded-lg hover:bg-[#f5f5f5] hover:border transition-colors"
+        id="clearCacheButton">
+        Clear Cache</button>
       </nav>
+      
     </div>
 
     <!-- Tab Contents -->
