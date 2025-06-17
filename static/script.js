@@ -132,7 +132,7 @@ document.getElementById('testForm').addEventListener('submit', async e => {
 
   const testFileInput = document.getElementById('testFile');
   if (testFileInput.files.length === 0) {
-    showToast('Please select a test CSV file.','information');
+    showToast('Please select a test CSV file.', 'information');
     return;
   }
 
@@ -165,8 +165,17 @@ document.getElementById('testForm').addEventListener('submit', async e => {
     console.log('Testing response:', data);
 
     if (response.ok && data?.status === 'success') {
-      testingProgress.textContent = data.message || 'Testing completed successfully!';
+      let finalMessage = data.message || 'Testing completed successfully!';
 
+      // ⛔️ Handle merging error gracefully
+      if (data?.merging?.status === 'error') {
+        finalMessage += `\n Merging failed: ${data.merging.error_message}`;
+        showToast(`${data.merging.error_message}`, 'warning');
+      }
+
+      testingProgress.textContent = finalMessage;
+
+      // ✅ Display download links if available
       if (data.downloads && Object.keys(data.downloads).length > 0) {
         downloadSection.classList.remove('hidden');
         downloadLinks.innerHTML = '';
@@ -289,7 +298,7 @@ let icon = {
 const showToast = (
     message,
     toastType,
-    duration = 5000) => {
+    duration = 10000) => {
     if (
         !Object.keys(icon).includes(toastType))
         toastType = "info";
@@ -304,9 +313,9 @@ const showToast = (
                       <div class="toast-message">${message}</div>
                       <div class="toast-progress"></div>
                       </div>`;
-    duration = duration || 5000;
+    duration = duration;
     box.querySelector(".toast-progress").style.animationDuration =
-            `${duration / 1000}s`;
+            `${duration / 10000}s`;
 
     let toastAlready = 
         document.body.querySelector(".toast");
