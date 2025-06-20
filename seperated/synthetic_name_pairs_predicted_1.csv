@@ -1,0 +1,420 @@
+name1,name2,is_match,name1_clean,name2_clean,cosine_sim,sbert_sim,jaro_sim,metaphone_match,Levenshtein,jaccard,token_set_ratio,complete_overlap,similar_gender,is_abbreviation,predicted_match,match_probability
+Yashawini Sachar,Sachar Yashawini,1,yash awini sachar,sachar yash awini,1.0000000000000002,0.9805651,0.788235294117647,0,14,1.0,1.0,0,1,1,1,0.9660763
+Yashawini Sachar,YashawiniSachar,1,yash awini sachar,yashawi nisachar,0.6234876469098095,0.5332252,0.9632352941176471,0,3,0.0,0.79,0,0,0,1,0.8326666
+Bhavya Toor,Bhahya Toor,1,bhavya toor,bhahya toor,0.6316938525642021,0.73644966,0.9575757575757576,0,1,0.3333333333333333,0.91,0,1,1,1,0.5381658
+Bhavya Toor,BhavyaToor,1,bhavya toor,bhavy atoor,0.6303966677734576,0.67810124,0.9818181818181818,0,2,0.0,0.45,0,0,0,1,0.97784674
+Isaac Varghese,Varghese Isaac,1,isaac varg hese,varg hese isaac,1.0,0.9346222,0.7277777777777779,0,12,1.0,1.0,0,1,1,1,0.9502381
+Isaac Varghese,Isaac Varghdse,1,isaac varg hese,isaac varg hdse,0.729400724052406,0.8614389,0.959047619047619,0,1,0.5,0.93,0,1,1,1,0.7881727
+Isaac Varghese,IsaacVarghese,1,isaac varg hese,isaacv arghese,0.6202281838787003,0.5749303,0.9723809523809525,0,3,0.0,0.76,0,1,0,1,0.8736669
+Divya Pillay,Pillay Divya,1,divya pillay,pillay divya,1.0000000000000002,0.9797636,0.6527777777777778,0,8,1.0,1.0,0,1,1,1,0.9487327
+Divya Pillay,Divya Pilnay,1,divya pillay,divya pilnay,0.6656504307621336,0.80508244,0.9666666666666666,0,1,0.3333333333333333,0.92,0,1,1,1,0.7546183
+Divya Pillay,DivyaPillay,1,divya pillay,divya pillay,1.0000000000000002,1.0,1.0,1,0,1.0,1.0,1,1,1,1,0.9952787
+Lakshmi Nagarajan,Nagarajan Lakshmi,1,lak shmi naga rajan,naga rajan lak shmi,1.0000000000000002,0.9861887,0.5750487329434698,0,16,1.0,1.0,0,1,1,1,0.97519433
+Lakshmi Nagarajan,LakshmiNagarajan,1,lak shmi naga rajan,lakshmin agarajan,0.48769652236728883,0.4241594,0.9342621259029928,0,4,0.0,0.72,0,0,0,1,0.5951228
+Falan Dalal,Dalal Falan,1,falan dalal,dalal falan,1.0000000000000004,0.98919535,0.7348484848484849,0,4,1.0,1.0,0,1,1,1,0.76106614
+Falan Dalal,FalanDalal,1,falan dalal,falan dalal,1.0000000000000004,1.0000002,1.0,1,0,1.0,1.0,1,1,1,1,0.9952787
+Wakeeta Sibal,Sibal Wakeeta,1,wak eeta sibal,sibal wak eeta,1.0,0.96724945,0.6761904761904761,0,12,1.0,1.0,0,1,1,1,0.96645975
+Wakeeta Sibal,WakeetaSibal,1,wak eeta sibal,wakeet asibal,0.5453037718080256,0.2247477,0.9653846153846154,0,3,0.0,0.74,0,0,0,1,0.8875811
+Dakshesh Yogi,Dakohesh Yogi,1,daks hesh yogi,dako hesh yogi,0.7371140195402509,0.87682456,0.9307692307692308,0,1,0.5,0.93,0,1,1,1,0.5338691
+Dakshesh Yogi,DaksheshYogi,1,daks hesh yogi,dakshe shyogi,0.6162709093876453,0.4451853,0.9703296703296703,0,3,0.0,0.89,0,0,0,1,0.87375665
+Tarak Ganesh,TarakGanesh,1,tarak ganesh,tarak ganesh,1.0,1.0,1.0,1,0,1.0,1.0,1,1,1,1,0.9952787
+Hitesh Tank,Tank Hitesh,1,hitesh tank,tank hitesh,1.0000000000000002,0.9791275,0.49242424242424243,0,9,1.0,1.0,0,1,1,1,0.9529856
+Hitesh Tank,HiteshTank,1,hitesh tank,hites htank,0.7115283371651298,0.47820386,0.9818181818181818,0,2,0.0,0.91,0,1,0,1,0.8696442
+Jeet Raja,JeetRaja,1,jeet raja,jeet raja,1.0,1.0,1.0,1,0,1.0,1.0,1,1,1,1,0.9952787
+Anita Banerjee,Acita Banerjee,1,anita bane rjee,acita bane rjee,0.7630168081818459,0.7360287,0.9600000000000001,0,1,0.5,0.93,0,1,1,1,0.7392487
+Anita Banerjee,AnitaBanerjee,1,anita bane rjee,anitab anerjee,0.5534332856594485,0.6816865,0.9723809523809525,0,3,0.0,0.48,0,0,1,1,0.9782672
+Ikbal Bir,IkbalBir,1,ikbal bir,ikba lbir,0.7273781106850611,0.6162525,0.9777777777777777,0,2,0.0,0.56,0,0,0,1,0.95940155
+Indali Chadha,Indali Chidha,1,indali chadha,indali chidha,0.650882079147315,0.6960722,0.9525641025641025,1,1,0.3333333333333333,0.92,0,1,1,1,0.9443245
+Indali Chadha,IndaliChadha,1,indali chadha,indali chadha,0.9999999999999999,1.0000001,1.0,1,0,1.0,1.0,1,1,1,1,0.9952787
+Ladli Sundaram,Sundaram Ladli,1,ladli sund aram,sund aram ladli,1.0,0.98581517,0.7277777777777779,0,12,1.0,1.0,0,1,1,1,0.96240604
+Ladli Sundaram,Ladli Sundaoam,1,ladli sund aram,ladli sund aoam,0.7908414697466634,0.8971256,0.9733333333333334,0,1,0.5,0.93,0,1,1,1,0.8792931
+Ladli Sundaram,LadliSundaram,1,ladli sund aram,ladlis undaram,0.610545194779623,0.68158126,0.9723809523809525,0,3,0.0,0.62,0,0,0,1,0.97078234
+Harrison Rai,Rai Harrison,1,harr ison rai,rai harr ison,1.0000000000000002,0.9646382,0.80982905982906,0,8,1.0,1.0,0,1,1,1,0.91908246
+Harrison Rai,Harriscn Rai,1,harr ison rai,harr iscn rai,0.742426184777763,0.7767365,0.9692307692307692,0,1,0.5,0.92,0,1,1,1,0.75146997
+Harrison Rai,HarrisonRai,1,harr ison rai,harri sonrai,0.4290919698463114,0.3239717,0.967948717948718,0,3,0.0,0.88,0,0,0,1,0.59448713
+Bhavika Andra,Bhavika Antra,1,bha vika andra,bha vika antra,0.6283084800405859,0.8621401,0.9714285714285714,1,1,0.5,0.93,0,1,1,1,0.98092747
+Pavani Bera,Pavani Bega,1,pavani bera,pavani bega,0.6054090899055306,0.7466484,0.9636363636363636,0,1,0.3333333333333333,0.91,0,1,1,1,0.7095277
+Pavani Bera,PavaniBera,1,pavani bera,pavan ibera,0.6732909401347308,0.6379503,0.9818181818181818,0,2,0.0,0.91,0,0,0,1,0.880062
+Vivaan Barad,Barad Vivaan,1,vivaan barad,barad vivaan,1.0000000000000002,0.9904458,0.6111111111111112,0,10,1.0,1.0,0,1,1,1,0.9556395
+Vivaan Barad,vivaan Barad,1,vivaan barad,vivaan barad,1.0000000000000002,1.0,1.0,1,0,1.0,1.0,1,1,1,1,0.9952787
+Vivaan Barad,VivaanBarad,1,vivaan barad,vivaa nbarad,0.6586952608271444,0.581864,0.9833333333333333,0,2,0.0,0.92,0,0,0,1,0.8722801
+Zayan Munshi,Munshi Zayan,1,zayan munshi,munshi zayan,1.0000000000000002,0.98772985,0.47222222222222215,0,12,1.0,1.0,0,1,1,1,0.9720585
+Zayan Munshi,Zayac Munshi,1,zayan munshi,zayac munshi,0.8068517780834438,0.88667536,0.9303030303030303,0,1,0.3333333333333333,0.92,0,1,1,1,0.63021576
+Zayan Munshi,ZayanMunshi,1,zayan munshi,zayan munshi,1.0000000000000002,1.0000001,1.0,1,0,1.0,1.0,1,1,1,1,0.9952787
+Zayan Munshi,Z4y4n Mun5h1,1,zayan munshi,zyn munh,0.2796593633907158,0.56535476,0.8999999999999999,0,4,0.0,0.8,0,0,1,1,0.51713127
+Barkha Bir,Bir Barkha,1,barkha bir,bir barkha,1.0,0.9860372,0.8066666666666666,0,7,1.0,1.0,0,1,1,1,0.91966796
+Tanish Golla,TanishGolla,1,tanish golla,tanis hgolla,0.8127306986400253,0.5847484,0.9833333333333333,0,2,0.0,0.92,0,0,0,1,0.8882679
+Frado Chaudhary,Frldo Chaudhary,1,frado chau dhary,frldo chau dhary,0.8176842200856662,0.8655516,0.8777777777777778,0,1,0.5,0.94,0,1,1,1,0.58946306
+Frado Chaudhary,FradoChaudhary,1,frado chau dhary,fradoch audhary,0.5664946045119899,0.5503651,0.9741666666666667,0,3,0.0,0.84,0,1,0,1,0.85560864
+Harrison Radhakrishnan,Harrisvn Radhakrishnan,1,harr ison radhak rishnan,harr isvn radhak rishnan,0.8344013338708065,0.8714622,0.9833333333333334,0,1,0.6,0.96,0,1,1,1,0.8964504
+Harrison Radhakrishnan,HarrisonRadhakrishnan,1,harr ison radhak rishnan,harrisonra dhakrishnan,0.5527167567241176,0.39178133,0.956060606060606,0,4,0.0,0.61,0,0,0,1,0.8397807
+Nitesh Sani,Nttesh Sani,1,nitesh sani,nttesh sani,0.6342455558575721,0.7683284,0.9454545454545455,1,1,0.3333333333333333,0.91,0,1,1,1,0.94939077
+Nitesh Sani,NiteshSani,1,nitesh sani,nites hsani,0.6690107069041025,0.5143502,0.9818181818181818,0,2,0.0,0.45,0,0,0,1,0.96052194
+Yug Chana,Chana Yug,1,yug chana,chana yug,1.0,0.9465702,0.3148148148148148,0,8,1.0,1.0,0,1,1,1,0.9201593
+Yug Chana,YugChana,1,yug chana,yugc hana,0.6715462177023888,0.4815337,0.9740740740740741,0,2,0.0,0.89,0,0,0,1,0.9281931
+Yug Chana,Yug Ch4n4,1,yug chana,yug chn,0.6141193890641324,0.4717519,0.9555555555555556,1,2,0.3333333333333333,0.88,0,1,1,1,0.5215542
+Michael Johal,Michaei Johal,1,mic hael johal,mic haei johal,0.8020081593138304,0.93995476,0.9252747252747253,0,1,0.5,0.93,0,1,1,1,0.74822986
+Pratyush Wali,Wali Pratyush,1,prat yush wali,wali prat yush,1.0,0.98507655,0.7056277056277057,0,10,1.0,1.0,0,1,1,1,0.95731527
+Pratyush Wali,Pratyush Wkli,1,prat yush wali,prat yush wkli,0.7823849148469664,0.7401037,0.9714285714285714,0,1,0.5,0.93,0,1,1,1,0.8088999
+Pratyush Wali,PratyushWali,1,prat yush wali,pratyu shwali,0.455790249749025,0.5992021,0.9703296703296703,0,3,0.0,0.67,0,0,0,1,0.9109911
+Maanav Anne,Anne Maanav,1,maanav anne,anne maanav,1.0000000000000002,0.9541577,0.6623376623376623,0,8,1.0,1.0,0,1,1,1,0.9416387
+Maanav Anne,Maabav Anne,1,maanav anne,maabav anne,0.6668474892757053,0.9088663,0.9575757575757576,0,1,0.3333333333333333,0.91,0,1,1,1,0.7264643
+Maanav Anne,MaanavAnne,1,maanav anne,maana vanne,0.7705765278369017,0.77409583,0.9818181818181818,0,2,0.0,0.55,0,0,0,1,0.9487596
+Tanvi Prasad,TanviPrasad,1,tanvi prasad,tanvi prasad,0.9999999999999997,1.0,1.0,1,0,1.0,1.0,1,1,1,1,0.9952787
+Zarna Pal,Pal Zarna,1,zarna pal,pal zarna,1.0000000000000002,0.9791751,0.5462962962962963,0,7,1.0,1.0,0,1,1,1,0.9307197
+Zarna Pal,ZarnaPal,1,zarna pal,zarn apal,0.5917097122109456,0.54449475,0.9777777777777777,0,2,0.0,0.89,0,0,0,1,0.9148413
+Atharv Bobal,Athurv Bobal,1,atharv bobal,athurv bobal,0.6789701242309057,0.9131446,0.961111111111111,1,1,0.3333333333333333,0.92,0,1,1,1,0.9897989
+Atharv Bobal,AtharvBobal,1,atharv bobal,athar vbobal,0.7474595148758139,0.63398236,0.9833333333333333,0,2,0.0,0.92,0,1,0,1,0.8552273
+Zaitra Pradhan,ZaitrauPradhan,1,zaitra pra dhan,zaitrau pradhan,0.7157334606975451,0.8328365,0.9733333333333334,0,2,0.0,0.73,0,0,1,1,0.97804606
+Zaitra Pradhan,ZaitraPradhan,1,zaitra pra dhan,zaitra pradhan,0.83941145137723,0.8325708,0.9866666666666667,0,1,0.25,0.76,0,1,1,1,0.98444647
+Kevin Rajan,KevinRajan,1,kevin rajan,kevin rajan,1.0000000000000002,1.0000001,1.0,1,0,1.0,1.0,1,1,1,1,0.9952787
+Banjeet Gour,Gour Banjeet,1,ban jeet gour,gour ban jeet,1.0000000000000002,0.9810828,0.6467236467236467,0,10,1.0,1.0,0,1,1,1,0.96307
+Banjeet Gour,BanjeetGour,1,ban jeet gour,banje etgour,0.5203319825909025,0.50254035,0.9626068376068376,0,3,0.0,0.64,0,1,0,1,0.87775975
+Vasatika Narain,Vasatika Nasain,1,vasa tika narain,vasa tika nasain,0.7162843325758566,0.90435547,0.975,0,1,0.5,0.94,0,1,1,1,0.872291
+Vasatika Narain,VasatikaNarain,1,vasa tika narain,vasatik anarain,0.5948130031938268,0.50361747,0.9608333333333333,0,3,0.0,0.71,0,0,0,1,0.83461833
+Anmol Bhatt,Anmol Bhamt,1,anmol bhatt,anmol bhamt,0.7159909912952634,0.83902407,0.9636363636363636,0,1,0.3333333333333333,0.91,0,1,1,1,0.8465366
+Anmol Bhatt,AnmolBhatt,1,anmol bhatt,anmol bhatt,1.0,1.0,1.0,1,0,1.0,1.0,1,1,1,1,0.9952787
+Unnati Krishna,Unneti Krishna,1,unnati kri shna,unneti kri shna,0.6430066528300397,0.8998984,0.9688888888888889,1,1,0.5,0.93,0,1,1,1,0.9340101
+Unnati Krishna,UnnatiKrishna,1,unnati kri shna,unnati krishna,0.88192802625866,0.63952804,0.9866666666666667,0,1,0.25,0.97,0,1,1,1,0.8443229
+Jatin Sarraf,Jytin Sarraf,1,jatin sarraf,jytin sarraf,0.7832031576661541,0.8024671,0.9499999999999998,1,1,0.3333333333333333,0.92,0,1,1,1,0.96341205
+Jatin Sarraf,JatinSarraf,1,jatin sarraf,jatin sarraf,0.9999999999999998,1.0000001,1.0,1,0,1.0,1.0,1,1,1,1,0.9952787
+Veer Nagar,Nagar Veer,1,veer nagar,nagar veer,1.0,0.9301937,0.5166666666666667,0,8,1.0,1.0,0,1,1,1,0.9193743
+Veer Nagar,VeerNagar,1,veer nagar,veer nagar,1.0,1.0,1.0,1,0,1.0,1.0,1,1,1,1,0.9952787
+Girik Peri,Peri Girik,1,girik peri,peri girik,1.0000000000000002,0.9733697,0.6222222222222222,0,6,1.0,1.0,0,1,1,1,0.8630414
+Girik Peri,GirikPeri,1,girik peri,giri kperi,0.7228364799520199,0.6552263,0.98,0,2,0.0,0.9,0,0,0,1,0.85725534
+Dalaja Dalal,Dalal Dalaja,1,dalaja dalal,dalal dalaja,1.0,0.99318403,0.9484848484848484,0,4,1.0,1.0,0,1,1,1,0.9736443
+Dalaja Dalal,DalajamDalal,1,dalaja dalal,dalaja mdalal,0.871773021517794,0.8109788,0.9846153846153847,0,1,0.3333333333333333,0.96,0,1,1,1,0.83283275
+Dalaja Dalal,DalajaDalal,1,dalaja dalal,dalaj adalal,0.814409327397193,0.7413138,0.9833333333333333,0,2,0.0,0.75,0,0,1,1,0.96297884
+Hemal Sarma,Hemal Saima,1,hemal sarma,hemal saima,0.6065176620306046,0.6890207,0.9636363636363636,0,1,0.3333333333333333,0.91,0,1,1,1,0.5506085
+Hemal Sarma,HemalSarma,1,hemal sarma,hemal sarma,0.9999999999999998,1.0000001,1.0,1,0,1.0,1.0,1,1,1,1,0.9952787
+Upadhriti Sachar,Sachar Upadhriti,1,upad hriti sachar,sachar upad hriti,1.0,0.9852537,0.7156862745098039,0,14,1.0,1.0,0,1,1,1,0.9706181
+Upadhriti Sachar,UpadhritiSachar,1,upad hriti sachar,upadhri tisachar,0.5824497276931391,0.62325513,0.9632352941176471,0,3,0.0,0.79,0,0,0,1,0.83437437
+Ryan Comar,Comar Ryan,1,ryan comar,comar ryan,1.0000000000000002,0.89451116,0.5333333333333333,0,8,1.0,1.0,0,1,1,1,0.9384798
+Ryan Comar,Ryan Comyr,1,ryan comar,ryan comyr,0.7400298885372248,0.7088604,0.96,1,1,0.3333333333333333,0.9,0,1,1,1,0.9619963
+Ryan Comar,RyanComar,1,ryan comar,ryan comar,1.0000000000000002,1.0000001,1.0,1,0,1.0,1.0,1,1,1,1,0.9952787
+Yashawini Chand,Yashawini Chund,1,yash awini chand,yash awini chund,0.7256048168354704,0.8182896,0.975,1,1,0.5,0.94,0,1,1,1,0.98233193
+Yashawini Chand,YashawiniChand,1,yash awini chand,yashawi nichand,0.5368190465528879,0.43965074,0.9608333333333333,0,3,0.0,0.77,0,0,0,1,0.72710234
+Raksha Ramakrishnan,Rakjha Ramakrishnan,1,raksha ramakr ishnan,rakjha ramakr ishnan,0.75950399866273,0.84219754,0.9766666666666667,0,1,0.5,0.95,0,1,1,1,0.87942755
+Raksha Ramakrishnan,RakshaRamakrishnan,1,raksha ramakr ishnan,raksharam akrishnan,0.6406735162691926,0.6791782,0.9689473684210526,0,3,0.0,0.82,0,0,0,1,0.8633496
+Zaid Sharma,Zaod Sharma,1,zaid sharma,zaod sharma,0.6202310613912189,0.9310337,0.9515151515151515,1,1,0.3333333333333333,0.91,0,1,1,1,0.9919342
+Zaid Sharma,ZaidSharma,1,zaid sharma,zaids harma,0.7115461869493345,0.56411695,0.9818181818181818,0,2,0.0,0.91,0,0,0,1,0.88428736
+Abhimanyu Sha,Sha Abhimanyu,1,abhi manyu sha,sha abhi manyu,1.0000000000000002,0.96604186,0.7985347985347985,0,8,1.0,1.0,0,1,1,1,0.9287107
+Abhimanyu Sha,AbhimanyuSha,1,abhi manyu sha,abhima nyusha,0.4433009135262879,0.49938232,0.9703296703296703,0,3,0.0,0.89,0,0,0,1,0.6445552
+Ijaya Dhaliwal,Ijaya Dhyliwal,1,ijaya dhal iwal,ijaya dhyl iwal,0.7005549153458299,0.9496164,0.9447619047619048,1,1,0.5,0.93,0,1,1,1,0.99115074
+Ijaya Dhaliwal,IjayaDhaliwal,1,ijaya dhal iwal,ijayad haliwal,0.6199991344787658,0.8190195,0.9723809523809525,0,3,0.0,0.62,0,0,0,1,0.9681531
+Harish Buch,Buch Harish,1,harish buch,buch harish,1.0000000000000002,0.9699339,0.49242424242424243,0,9,1.0,1.0,0,1,1,1,0.9529856
+Harish Buch,Harish Bdch,1,harish buch,harish bdch,0.5513925147208454,0.8279297,0.9636363636363636,0,1,0.3333333333333333,0.91,0,1,1,1,0.84589756
+Harish Buch,HarishBuch,1,harish buch,haris hbuch,0.7030227357026546,0.5877615,0.9818181818181818,0,2,0.0,0.55,0,1,0,1,0.94935036
+Harish Buch,H4r15h Buch,1,harish buch,hrh buch,0.6965835764328165,0.65226585,0.9181818181818182,0,3,0.3333333333333333,0.84,0,1,1,1,0.74785733
+Arin Sarraf,ArinSarraf,1,arin sarraf,arins arraf,0.7549009401767802,0.83150584,0.9818181818181818,0,2,0.0,0.91,0,1,0,1,0.8654181
+Tejas Golla,Golla Tejas,1,tejas golla,golla tejas,1.0,0.9800818,0.5151515151515151,0,10,1.0,1.0,0,1,1,1,0.9556395
+Tejas Golla,TejasGolla,1,tejas golla,tejas golla,1.0,1.0,1.0,1,0,1.0,1.0,1,1,1,1,0.9952787
+Indrajit Pandey,Pandey Indrajit,1,indr ajit pandey,pandey indr ajit,1.0000000000000002,0.9869715,0.7467948717948718,0,13,1.0,1.0,0,1,1,1,0.9733733
+Indrajit Pandey,IndrajityPandey,1,indr ajit pandey,indraji typandey,0.6209446144145896,0.52007246,0.9083333333333333,0,3,0.0,0.69,0,0,0,1,0.53848773
+Indrajit Pandey,IndrajitPandey,1,indr ajit pandey,indraji tpandey,0.5982521239241606,0.56215143,0.9608333333333333,0,3,0.0,0.71,0,0,0,1,0.83461833
+Aarna Wadhwa,Wadhwa Aarna,1,aarna wadhwa,wadhwa aarna,0.9999999999999999,0.9472021,0.6746031746031745,0,8,1.0,1.0,0,1,1,1,0.9416387
+Aarna Wadhwa,Aarna Wadkwa,1,aarna wadhwa,aarna wadkwa,0.6799691469725702,0.9100546,0.9666666666666666,0,1,0.3333333333333333,0.92,0,1,1,1,0.8591877
+Aarna Wadhwa,AarnaWadhwa,1,aarna wadhwa,aarna wadhwa,0.9999999999999999,1.0,1.0,1,0,1.0,1.0,1,1,1,1,0.9952787
+Warhi Mangal,WarhiMangal,1,warhi mangal,warhi mangal,1.0000000000000002,1.0,1.0,1,0,1.0,1.0,1,1,1,1,0.9952787
+Yatan Shanker,Yatah Shanker,1,yatan sha nker,yatah sha nker,0.7551673177152678,0.8723109,0.9406593406593406,0,1,0.5,0.93,0,1,1,1,0.5100718
+Yatan Shanker,YatanShanker,1,yatan sha nker,yatans hanker,0.6574459232871266,0.5714565,0.9703296703296703,0,3,0.0,0.74,0,0,0,1,0.9168477
+Aarini Rama,Rama Aarini,1,aarini rama,rama aarini,1.0000000000000004,0.98888737,0.6931818181818182,0,9,1.0,1.0,0,1,1,1,0.9608423
+Aarini Rama,AariniRama,1,aarini rama,aarin irama,0.7222545158785538,0.536865,0.9818181818181818,0,2,0.0,0.91,0,0,0,1,0.8757161
+Jonathan Khatri,Khatri Jonathan,1,jona than khatri,khatri jona than,1.0,0.95933926,0.7467948717948718,0,14,1.0,1.0,0,1,1,1,0.9676743
+Jonathan Khatri,Jxnathan Khatri,1,jona than khatri,jxna than khatri,0.7847382582678,0.7444476,0.9625,0,1,0.5,0.94,0,1,1,1,0.74333745
+Jonathan Khatri,JonathanKhatri,1,jona than khatri,jonatha nkhatri,0.7082394097349657,0.7915181,0.9608333333333333,0,3,0.0,0.71,0,0,0,1,0.7799196
+Hitesh Sarma,Hytesh Sarma,1,hitesh sarma,hytesh sarma,0.614382834720893,0.7505358,0.9499999999999998,1,1,0.3333333333333333,0.92,0,1,1,1,0.9462712
+Hitesh Sarma,HiteshSarma,1,hitesh sarma,hites hsarma,0.722977000311352,0.38712823,0.9833333333333333,0,2,0.0,0.92,0,0,0,1,0.8757161
+Daniel Bava,Bava Daniel,1,daniel bava,bava daniel,1.0000000000000002,0.91891384,0.5151515151515151,0,10,1.0,1.0,0,1,1,1,0.9414148
+Daniel Bava,DanielBava,1,daniel bava,danie lbava,0.6450013468247839,0.40337917,0.9818181818181818,0,2,0.0,0.55,0,0,0,1,0.9611564
+Vasana Madan,VasanaMadan,1,vasana madan,vasan amadan,0.7514196082964786,0.75880337,0.9833333333333333,0,2,0.0,0.92,0,0,0,1,0.8601887
+Max Iyer,MaxIyer,1,max iyer,max iyer,1.0000000000000002,1.0,1.0,1,0,1.0,1.0,1,1,1,1,0.9952787
+Patrick Chakraborty,Patricr Chakraborty,1,pat rick chakr aborty,pat ricr chakr aborty,0.8468920691559747,0.7889525,0.9509523809523809,0,1,0.6,0.95,0,1,1,1,0.6762926
+Advay Sur,Sur Advay,1,advay sur,sur advay,1.0,0.97558546,0.3148148148148148,0,8,1.0,1.0,0,1,1,1,0.9296692
+Advay Sur,Advam Sur,1,advay sur,advam sur,0.7766605798151272,0.8844547,0.9555555555555556,0,1,0.3333333333333333,0.89,0,1,1,1,0.6852847
+Advay Sur,AdvaySur,1,advay sur,adva ysur,0.6754599577551467,0.7756748,0.9777777777777777,1,2,0.0,0.89,0,0,0,1,0.9678229
+Jagvi Gill,Jagvi Gqll,1,jagvi gill,jagvi gqll,0.66499232008979,0.66735876,0.96,0,1,0.3333333333333333,0.9,0,1,1,1,0.5527217
+Jagvi Gill,JagviGill,1,jagvi gill,jagv igill,0.7247638442735008,0.52496165,0.98,0,2,0.0,0.9,0,0,0,1,0.8680282
+Lakshit Sekhon,Lhkshit Sekhon,1,lak shit sekhon,lhk shit sekhon,0.8203347578516612,0.93093634,0.9171428571428571,0,1,0.5,0.93,0,1,1,1,0.74822986
+Lakshit Sekhon,LakshitSekhon,1,lak shit sekhon,lakshi tsekhon,0.6586497278912612,0.42487532,0.951111111111111,0,3,0.0,0.69,0,0,0,1,0.6200419
+Netra Bali,Bali Netra,1,netra bali,bali netra,1.0,0.98923707,0.5333333333333333,0,10,1.0,1.0,0,1,1,1,0.9556395
+Netra Bali,NetraBali,1,netra bali,netr abali,0.6701668890589366,0.47842032,0.98,0,2,0.0,0.9,0,0,0,1,0.8777964
+Suhani Krishna,Krishna Suhani,1,suhani kri shna,kri shna suhani,1.0000000000000002,0.9884111,0.7277777777777779,0,12,1.0,1.0,0,1,1,1,0.96240604
+Suhani Krishna,Suhani Krrshna,1,suhani kri shna,suhani krr shna,0.7330309416723506,0.94286954,0.9733333333333334,1,1,0.5,0.93,0,1,1,1,0.99465287
+Suhani Krishna,SuhaniKrishna,1,suhani kri shna,suhani krishna,0.8527280173347844,0.720811,0.9866666666666667,0,1,0.25,0.97,0,1,1,1,0.9513246
+Lucky Baria,Baria Lucky,1,lucky baria,baria lucky,1.0000000000000002,0.98498845,0.2878787878787879,0,10,1.0,1.0,0,1,1,1,0.9490514
+Lucky Baria,LuckyBaria,1,lucky baria,lucky baria,1.0000000000000002,1.0,1.0,1,0,1.0,1.0,1,1,1,1,0.9952787
+Lucky Baria,Lucky B4r14,1,lucky baria,lucky br,0.7588167763128362,0.43153322,0.9454545454545455,1,3,0.3333333333333333,0.84,0,1,1,1,0.70362955
+Kiaan Sibal,Sibal Kiaan,1,kiaan sibal,sibal kiaan,1.0000000000000002,0.9820162,0.6363636363636364,0,6,1.0,1.0,0,1,1,1,0.8454155
+Kiaan Sibal,KiaanSibal,1,kiaan sibal,kiaan sibal,1.0000000000000002,1.0,1.0,1,0,1.0,1.0,1,1,1,1,0.9952787
+Faras Hari,Hari Faras,1,faras hari,hari faras,1.0,0.9738771,0.6222222222222222,0,6,1.0,1.0,0,1,1,1,0.8630414
+Faras Hari,Farcs Hari,1,faras hari,farcs hari,0.5222483654656468,0.8505,0.9014814814814816,0,1,0.3333333333333333,0.9,0,1,1,1,0.68270236
+Faras Hari,FarasHari,1,faras hari,fara shari,0.7444985137429868,0.71112883,0.98,0,2,0.0,0.9,0,0,0,1,0.8612969
+Harinakshi Kannan,Kannan Harinakshi,1,harin akshi kannan,kannan harin akshi,1.0,0.9904458,0.8009259259259259,0,14,1.0,1.0,0,1,1,1,0.9660763
+Harinakshi Kannan,HarinakshiKannan,1,harin akshi kannan,harinaks hikannan,0.589394758682245,0.72325635,0.965359477124183,0,3,0.0,0.69,0,0,1,1,0.8374334
+Bhanumati Tata,Tata Bhanumati,1,bhan umati tata,tata bhan umati,1.0,0.9594498,0.8126984126984128,0,10,1.0,1.0,0,1,1,1,0.9443651
+Bhanumati Tata,BhanumatiTata,1,bhan umati tata,bhanum atitata,0.4356940938588147,0.5399256,0.9723809523809525,0,3,0.0,0.55,0,0,0,1,0.91185755
+Yashica Tandon,Tandon Yashica,1,yas hica tandon,tandon yas hica,1.0,0.970592,0.48888888888888893,0,14,1.0,1.0,0,1,1,1,0.97519433
+Yashica Tandon,Yashica Tanson,1,yas hica tandon,yas hica tanson,0.6915865919760947,0.8905387,0.9733333333333334,0,1,0.5,0.93,0,1,1,1,0.8485496
+Yashica Tandon,YashicaTandon,1,yas hica tandon,yashic atandon,0.6239568375473965,0.5159839,0.951111111111111,0,3,0.0,0.76,0,0,0,1,0.62063307
+Isaac Borde,IsaacBorde,1,isaac borde,isaac borde,1.0,1.0000002,1.0,1,0,1.0,1.0,1,1,1,1,0.9952787
+Daniel Gour,DanielgGour,1,daniel gour,danie lggour,0.6597077472300221,0.40560973,0.9651515151515152,0,2,0.0,0.87,0,1,0,1,0.8894127
+Daniel Gour,DanielGour,1,daniel gour,danie lgour,0.6736869246786461,0.4790783,0.9818181818181818,0,2,0.0,0.91,0,1,0,1,0.8696442
+Simon Ganesan,Ganesan Simon,1,simon gan esan,gan esan simon,1.0000000000000002,0.9631037,0.7056277056277057,0,10,1.0,1.0,0,1,1,1,0.951348
+Simon Ganesan,SimonGanesan,1,simon gan esan,simong anesan,0.6047717165584984,0.58650523,0.9703296703296703,0,3,0.0,0.74,0,1,0,1,0.88793325
+Yashasvi Konda,Yashanvi Konda,1,yash asvi konda,yash anvi konda,0.6226258745116974,0.8946479,0.9304761904761905,0,1,0.5,0.93,0,1,1,1,0.5740215
+Yashasvi Konda,YashasviKonda,1,yash asvi konda,yashas vikonda,0.49502451955417975,0.535428,0.9723809523809525,0,3,0.0,0.83,0,0,0,1,0.8469803
+Aarna Sandhu,AarnaSandhu,1,aarna sandhu,aarna sandhu,1.0,1.0,1.0,1,0,1.0,1.0,1,1,1,1,0.9952787
+Hamsini Loyal,Loyal Hamsini,1,ham sini loyal,loyal ham sini,1.0000000000000002,0.9844737,0.7056277056277057,0,12,1.0,1.0,0,1,1,1,0.96121216
+Hamsini Loyal,Hamsini Loual,1,ham sini loyal,ham sini loual,0.5903256920569216,0.70677507,0.9714285714285714,0,1,0.5,0.93,0,1,1,1,0.68282527
+Hamsini Loyal,HamsiniLoyal,1,ham sini loyal,hamsin iloyal,0.514911766619636,0.5344628,0.9474358974358974,0,3,0.0,0.67,0,0,0,1,0.55111414
+Chameli Prashad,Prashad Chameli,1,cha meli pra shad,pra shad cha meli,1.0,0.9889804,0.4803921568627451,0,12,1.0,1.0,0,1,1,1,0.9720585
+Chameli Prashad,ChameliPrashad,1,cha meli pra shad,chameli prashad,0.6504332912874835,0.71491736,0.941437908496732,0,2,0.0,0.94,0,0,1,1,0.5081279
+Faqid Kala,Fhqid Kala,1,faqid kala,fhqid kala,0.7707947654555298,0.90854716,0.94,0,1,0.3333333333333333,0.9,0,1,1,1,0.6381841
+Faqid Kala,FaqidKala,1,faqid kala,faqi dkala,0.7135945738758306,0.70811933,0.98,0,2,0.0,0.5,0,0,0,1,0.96566117
+Aarna Rastogi,Rastogi Aarna,1,aarna ras togi,ras togi aarna,1.0000000000000002,0.97181743,0.7658730158730158,0,12,1.0,1.0,0,1,1,1,0.9624939
+Aarna Rastogi,Aarra Rastogi,1,aarna ras togi,aarra ras togi,0.7559456789145711,0.87894917,0.9487179487179487,0,1,0.5,0.93,0,1,1,1,0.5018043
+Aarna Rastogi,AarnaRastogi,1,aarna ras togi,aarnar astogi,0.6858072503644951,0.6788093,0.9703296703296703,0,3,0.0,0.89,0,0,1,1,0.93247867
+Radha Chauhan,Ranha Chauhan,1,radha cha uhan,ranha cha uhan,0.6049104956729675,0.6658591,0.9619047619047619,0,1,0.5,0.93,0,1,1,1,0.5279443
+Radha Chauhan,RadhaChauhan,1,radha cha uhan,radhac hauhan,0.5039097649636549,0.80188835,0.9703296703296703,0,3,0.0,0.59,0,0,0,1,0.96065944
+Naveen Anne,Anne Naveen,1,naveen anne,anne naveen,1.0,0.9407886,0.806060606060606,0,8,1.0,1.0,0,1,1,1,0.91908246
+Naveen Anne,Naveon Anne,1,naveen anne,naveon anne,0.7047723700707038,0.8983129,0.9636363636363636,1,1,0.3333333333333333,0.91,0,1,1,1,0.9557982
+Naveen Anne,NaveenAnne,1,naveen anne,navee nanne,0.7347911686242847,0.7102704,0.9818181818181818,0,2,0.0,0.91,0,1,0,1,0.8736363
+Charles Badal,Badal Charles,1,cha rles badal,badal cha rles,1.0,0.97731656,0.7056277056277057,0,12,1.0,1.0,0,1,1,1,0.96121216
+Charles Badal,CharlesBadal,1,cha rles badal,charle sbadal,0.5018462466749601,0.41613972,0.9474358974358974,0,3,0.0,0.52,0,0,0,1,0.6016091
+Nitara Shanker,Shanker Nitara,1,nitara sha nker,sha nker nitara,1.0000000000000004,0.97933614,0.5638888888888889,0,13,1.0,1.0,0,1,1,1,0.9777916
+Nitara Shanker,uitara Shanker,1,nitara sha nker,uitara sha nker,0.8110877583441706,0.9006447,0.9555555555555556,0,1,0.5,0.93,0,1,1,1,0.65811175
+Nitara Shanker,NitaraShanker,1,nitara sha nker,nitara shanker,0.8141499039414506,0.6667954,0.9866666666666667,0,1,0.25,0.76,0,1,1,1,0.9721214
+Wishi Bava,Bava Wishi,1,wishi bava,bava wishi,1.0000000000000002,0.9851341,0.4222222222222222,0,10,1.0,1.0,0,1,1,1,0.9490514
+Wishi Bava,WishiBava,1,wishi bava,wish ibava,0.7380548912701932,0.6460748,0.98,0,2,0.0,0.9,0,0,0,1,0.85725534
+Andrew Doctor,Doctor Andrew,1,andrew,andrew,1.0,1.0,1.0,1,0,1.0,1.0,1,1,0,1,0.9736649
+Andrew Doctor,AndrewDoctor,1,andrew,andrew doctor,0.6727490807011755,0.75797886,0.8923076923076924,0,7,0.5,1.0,0,1,0,1,0.8620641
+Ira Raju,IragRaju,1,ira raju,irag raju,0.7512443989604267,0.88765204,0.9740740740740741,0,1,0.3333333333333333,0.94,0,1,1,1,0.87377656
+Ira Raju,IraRaju,1,ira raju,ira raju,1.0000000000000002,1.0000002,1.0,1,0,1.0,1.0,1,1,1,1,0.9952787
+Ojasvi Parikh,OjasviParikh,1,ojasvi parikh,ojasvi parikh,1.0,1.0,1.0,1,0,1.0,1.0,1,1,1,1,0.9952787
+Vihaan Kapur,VihaanKapur,1,vihaan kapur,vihaa nkapur,0.710996436090014,0.7107016,0.9833333333333333,0,2,0.0,0.92,0,0,0,1,0.8747081
+Jason Bir,JasonBir,1,jason bir,jaso nbir,0.5371077361450369,0.23241292,0.9777777777777777,0,2,0.0,0.56,0,1,0,1,0.9457495
+Ronith Varghese,RonithVarghese,1,ronith varg hese,ronithv arghese,0.6189702280948788,0.58941007,0.9741666666666667,0,3,0.0,0.77,0,1,0,1,0.83133787
+Ranveer Acharya,Ragveer Acharya,1,ran veer ach arya,rag veer ach arya,0.8641433193152196,0.8300513,0.9686274509803922,0,1,0.6,0.94,0,1,1,1,0.78870535
+Vyanjana Pandit,Vyabjana Pandit,1,vyan jana pandit,vyab jana pandit,0.8147655177104083,0.91956115,0.9086111111111111,0,1,0.5,0.94,0,1,1,1,0.7813262
+Vyanjana Pandit,VyanjanaPandit,1,vyan jana pandit,vyanjan apandit,0.7243322037180981,0.62082875,0.9608333333333333,0,3,0.0,0.77,0,0,0,1,0.75503457
+Aachal Gera,Gera Aachal,1,aachal gera,gera aachal,1.0000000000000002,0.984852,0.5696969696969697,0,10,1.0,1.0,0,1,1,1,0.9556395
+Aachal Gera,Aachab Gera,1,aachal gera,aachab gera,0.8218220822954749,0.7143484,0.9636363636363636,0,1,0.3333333333333333,0.91,0,1,1,1,0.7491056
+Aachal Gera,AachalGera,1,aachal gera,aacha lgera,0.7341250363505569,0.44286624,0.9818181818181818,0,2,0.0,0.91,0,0,0,1,0.8757161
+Kavya Vig,Vig Kavya,1,kavya vig,vig kavya,1.0000000000000002,0.9895554,0.5462962962962963,0,8,1.0,1.0,0,1,1,1,0.9386014
+Kavya Vig,Kavya Vqg,1,kavya vig,kavya vqg,0.786068149424322,0.8493056,0.9555555555555556,0,1,0.3333333333333333,0.89,0,1,1,1,0.6852847
+Kavya Vig,KavyaVig,1,kavya vig,kavy avig,0.6752564012350679,0.73974,0.9777777777777777,0,2,0.0,0.44,0,0,0,1,0.97139716
+Veda Padmanabhan,Padmanabhan Veda,1,veda padma nabhan,padma nabhan veda,0.9999999999999998,0.9863527,0.7394957983193278,0,10,1.0,1.0,0,1,1,1,0.9567724
+Veda Padmanabhan,VedaPadmanabhan,1,veda padma nabhan,vedapad manabhan,0.5742430329041364,0.6804049,0.9632352941176471,0,3,0.0,0.67,0,0,0,1,0.91193587
+Veda Rajagopal,Rajagopal Veda,1,veda raja gopal,raja gopal veda,1.0,0.98380333,0.7277777777777779,0,10,1.0,1.0,0,1,1,1,0.9586239
+Veda Rajagopal,Veca Rajagopal,1,veda raja gopal,veca raja gopal,0.6692692591361803,0.90405315,0.9644444444444444,0,1,0.5,0.93,0,1,1,1,0.84079903
+Veda Rajagopal,VedaRajagopal,1,veda raja gopal,vedara jagopal,0.5835453830380509,0.67870116,0.9723809523809525,0,3,0.0,0.69,0,0,0,1,0.9632605
+Jackson Solanki,Solanki Jackson,1,jac kson sol anki,sol anki jac kson,1.0000000000000002,0.9853035,0.6892911010558068,0,14,1.0,1.0,0,1,1,1,0.9712875
+Jackson Solanki,Jackson Sohanki,1,jac kson sol anki,jac kson soh anki,0.795203743087968,0.8802273,0.9764705882352941,0,1,0.6,0.94,0,1,1,1,0.8932426
+Jackson Solanki,JacksonSolanki,1,jac kson sol anki,jackson solanki,0.6572793817526825,0.5112861,0.941437908496732,0,2,0.0,0.69,0,0,1,1,0.5221906
+Imaran Dua,ImaranDua,1,imaran dua,imar andua,0.6803160898209255,0.5201243,0.98,0,2,0.0,0.8,0,0,0,1,0.94240266
+Chandresh Chawla,Chawla Chandresh,1,chan dresh chawla,chawla chan dresh,1.0000000000000002,0.97582245,0.834313725490196,0,14,1.0,1.0,0,1,1,1,0.958141
+Chandresh Chawla,ChandreshtChawla,1,chan dresh chawla,chandres htchawla,0.6589061438531472,0.53994143,0.9514705882352941,0,3,0.0,0.65,0,0,0,1,0.6200419
+Chandresh Chawla,ChandreshChawla,1,chan dresh chawla,chandre shchawla,0.6632324731846642,0.6476685,0.9632352941176471,0,3,0.0,0.67,0,0,0,1,0.8945139
+Jyoti Bhat,Bhat Jyoti,1,jyoti bhat,bhat jyoti,1.0000000000000002,0.96488214,0.5333333333333333,0,8,1.0,1.0,0,1,1,1,0.9302087
+Jyoti Bhat,Jnoti Bhat,1,jyoti bhat,jnoti bhat,0.5398954991068557,0.8473806,0.94,0,1,0.3333333333333333,0.9,0,1,1,1,0.6276104
+Jyoti Bhat,JyotiBhat,1,jyoti bhat,jyot ibhat,0.6183234650656774,0.815181,0.98,0,2,0.0,0.9,0,0,0,1,0.88543195
+Jyoti Bhat,Jy0t1 Bh4t,1,jyoti bhat,jyt bht,0.27109136608410644,0.6177345,0.92,0,3,0.0,0.82,0,0,1,1,0.5173083
+Udant Sahni,Udang Sahni,1,udant sahni,udang sahni,0.7987195314451359,0.85638857,0.9636363636363636,0,1,0.3333333333333333,0.91,0,1,1,1,0.85081804
+Udant Sahni,UdantSahni,1,udant sahni,udant sahni,1.0,1.0000001,1.0,1,0,1.0,1.0,1,1,1,1,0.9952787
+Udant Sahni,Ud4nt 54hn1,1,udant sahni,udnt hn,0.22811949904586873,0.4631632,0.9030303030303031,0,4,0.0,0.78,0,0,0,1,0.58015233
+Vansha Choudhury,Vaniha Choudhury,1,vansha chou dhury,vaniha chou dhury,0.6815996958952698,0.88411343,0.9725490196078431,0,1,0.5,0.94,0,1,1,1,0.8427981
+Vansha Choudhury,VanshaChoudhury,1,vansha chou dhury,vanshac houdhury,0.6052050054027605,0.68472064,0.975735294117647,0,3,0.0,0.91,0,0,0,1,0.85672724
+Isha Hora,Isva Hora,1,isha hora,isva hora,0.7020506339773509,0.827549,0.9074074074074073,0,1,0.3333333333333333,0.89,0,1,1,1,0.5409693
+Isha Hora,IshaHora,1,isha hora,isha hora,1.0000000000000002,0.9999999,1.0,1,0,1.0,1.0,1,1,1,1,0.9952787
+Sanaya Rau,SanayaRau,1,sanaya rau,sana yarau,0.5440228696318345,0.65409243,0.98,0,2,0.0,0.6,0,0,0,1,0.9763982
+Tara Bora,Bora Tara,1,tara bora,bora tara,1.0,0.96756196,0.6666666666666666,0,4,1.0,1.0,0,1,1,1,0.7757602
+Tara Bora,TaraBora,1,tara bora,tara bora,1.0,1.0,1.0,1,0,1.0,1.0,1,1,1,1,0.9952787
+Nirja Bose,Bose Nirja,1,nirja bose,bose nirja,1.0,0.9383699,0.39999999999999997,0,10,1.0,1.0,0,1,1,1,0.9419987
+Nirja Bose,Nrrja Bose,1,nirja bose,nrrja bose,0.7277124914889415,0.92528224,0.94,1,1,0.3333333333333333,0.9,0,1,1,1,0.99325895
+Nirja Bose,NirjaBose,1,nirja bose,nirj abose,0.6235024314376628,0.59887916,0.98,0,2,0.0,0.9,0,0,0,1,0.8607721
+Dominic Munshi,Munshi Dominic,1,dom inic munshi,munshi dom inic,1.0,0.98544097,0.6592592592592593,0,14,1.0,1.0,0,1,1,1,0.9712875
+Dominic Munshi,DominicMunshi,1,dom inic munshi,domini cmunshi,0.6054416042480638,0.5803863,0.951111111111111,0,3,0.0,0.48,0,0,0,1,0.74756473
+Janani Iyengar,Iyengar Janani,1,janani iye ngar,iye ngar janani,1.0000000000000002,0.9675199,0.5015873015873016,0,13,1.0,1.0,0,1,1,1,0.9777916
+Janani Iyengar,Jananc Iyengar,1,janani iye ngar,jananc iye ngar,0.8194836463769729,0.9481037,0.959047619047619,0,1,0.5,0.93,0,1,1,1,0.90614563
+Janani Iyengar,JananiIyengar,1,janani iye ngar,janani iyengar,0.7717116010470213,0.75913084,0.9866666666666667,0,1,0.25,0.97,0,1,1,1,0.957796
+Azad Chauhan,Chauhan Azad,1,azad cha uhan,cha uhan azad,1.0000000000000002,0.987463,0.7459207459207459,0,8,1.0,1.0,0,1,1,1,0.94014233
+Azad Chauhan,AzadChauhan,1,azad cha uhan,azadc hauhan,0.6217596439653238,0.7328645,0.967948717948718,0,3,0.0,0.88,0,0,0,1,0.8698088
+Tanish Rege,Rege Tanish,1,tanish rege,rege tanish,1.0,0.9693945,0.393939393939394,0,10,1.0,1.0,0,1,1,1,0.9490514
+Tanish Rege,Tanish rege,1,tanish rege,tanish rege,1.0,1.0,1.0,1,0,1.0,1.0,1,1,1,1,0.9952787
+Tanish Rege,TanishRege,1,tanish rege,tanis hrege,0.7609493637828908,0.5005414,0.9818181818181818,0,2,0.0,0.91,0,1,0,1,0.86015975
+Bhavani Amble,Bhavani Azble,1,bha vani amble,bha vani azble,0.7456696883777822,0.8494928,0.9714285714285714,0,1,0.5,0.93,0,1,1,1,0.86785346
+Bhavani Amble,BhavaniAmble,1,bha vani amble,bhavan iamble,0.6216444751954019,0.4777101,0.9474358974358974,0,3,0.0,0.52,0,0,0,1,0.621868
+Shravya Sangha,Sangha Shravya,1,shr avya sangha,sangha shr avya,1.0000000000000002,0.9901218,0.6777777777777777,0,12,1.0,1.0,0,1,1,1,0.96645975
+Shravya Sangha,Shravya Sargha,1,shr avya sangha,shr avya sargha,0.6826257845293677,0.8477691,0.9733333333333334,0,1,0.5,0.93,0,1,1,1,0.84322375
+Daniel Kari,Deniel Kari,1,daniel kari,deniel kari,0.6692060034908772,0.68580097,0.9154545454545455,1,1,0.3333333333333333,0.91,0,1,1,1,0.9473579
+Daniel Kari,DanielKari,1,daniel kari,danie lkari,0.5871180441846744,0.5238335,0.9818181818181818,0,2,0.0,0.91,0,0,0,1,0.8670301
+Vritti Bhalla,Vditti Bhalla,1,vritti bhalla,vditti bhalla,0.7161916622356674,0.81245327,0.9538461538461539,0,1,0.3333333333333333,0.92,0,1,1,1,0.6123423
+Vritti Bhalla,VrittiBhalla,1,vritti bhalla,vritti bhalla,1.0,1.0,1.0,1,0,1.0,1.0,1,1,1,1,0.9952787
+Lohit Seth,Seth Lohit,1,lohit seth,seth lohit,1.0000000000000004,0.950309,0.5333333333333333,0,9,1.0,1.0,0,1,1,1,0.94644684
+Lohit Seth,Lohij Seth,1,lohit seth,lohij seth,0.7726917752336406,0.8983865,0.9155555555555556,0,1,0.3333333333333333,0.9,0,1,1,1,0.67281646
+Lohit Seth,LohitSeth,1,lohit seth,lohi tseth,0.7013529374329526,0.4597032,0.98,0,2,0.0,0.9,0,0,0,1,0.8777964
+Lakshmi Oommen,Oommen Lakshmi,1,lak shmi oommen,oommen lak shmi,0.9999999999999998,0.9802689,0.42777777777777776,0,14,1.0,1.0,0,1,1,1,0.97142357
+Lakshmi Oommen,Lakshmi Oomken,1,lak shmi oommen,lak shmi oomken,0.6680686633215206,0.8787023,0.9733333333333334,0,1,0.5,0.93,0,1,1,1,0.8849258
+Lakshmi Oommen,LakshmiOommen,1,lak shmi oommen,lakshm ioommen,0.5968827148526029,0.59129745,0.951111111111111,0,3,0.0,0.69,0,0,0,1,0.62012756
+Patrick Shukla,Shukla Patrick,1,pat rick shukla,shukla pat rick,1.0000000000000002,0.95379853,0.43333333333333335,0,14,1.0,1.0,0,1,1,1,0.96736133
+Patrick Shukla,PatrickShukla,1,pat rick shukla,patric kshukla,0.5297928810890904,0.6252227,0.951111111111111,0,3,0.0,0.48,0,0,0,1,0.72213304
+Pushti Bora,Pushti Bpra,1,pushti bora,pushti bpra,0.6500834376950778,0.754843,0.9636363636363636,0,1,0.3333333333333333,0.91,0,1,1,1,0.71017
+Pushti Bora,PushtiBora,1,pushti bora,pusht ibora,0.5917335641771654,0.6157383,0.9818181818181818,0,2,0.0,0.91,0,0,0,1,0.8670301
+Aahana Bir,AahanaBir,1,aahana bir,aaha nabir,0.5744411174921382,0.63577855,0.98,0,2,0.0,0.9,0,0,0,1,0.87657464
+Samarth Pandya,Samabth Pandya,1,sam arth pandya,sam abth pandya,0.7776113036336418,0.86893594,0.9733333333333334,0,1,0.5,0.93,0,1,1,1,0.870702
+Samarth Pandya,SamarthPandya,1,sam arth pandya,samart hpandya,0.5356818390378746,0.5722322,0.951111111111111,0,3,0.0,0.76,0,0,0,1,0.64790076
+Gabriel Deshmukh,Deshmukh Gabriel,1,gab riel desh mukh,desh mukh gab riel,1.0000000000000002,0.9901256,0.38888888888888884,0,16,1.0,1.0,0,1,1,1,0.97142357
+Gabriel Deshmukh,Gabriyl Deshmukh,1,gab riel desh mukh,gab riyl desh mukh,0.7225189293092279,0.9315345,0.9542483660130718,1,1,0.6,0.94,0,1,1,1,0.99555826
+Chakrika Kar,Kar Chakrika,1,chak rika kar,kar chak rika,1.0000000000000002,0.99025905,0.8461538461538461,0,8,1.0,1.0,0,1,1,1,0.95366716
+Chakrika Kar,Chakrika Kir,1,chak rika kar,chak rika kir,0.7754633840103399,0.9737705,0.9692307692307692,1,1,0.5,0.92,0,1,1,1,0.9950878
+Chakrika Kar,ChakrikaKar,1,chak rika kar,chakr ikakar,0.4093409305246952,0.8051963,0.967948717948718,0,3,0.0,0.72,0,0,0,1,0.81196594
+Advik Goel,Goel Advik,1,advik goel,goel advik,1.0,0.97788006,0.39999999999999997,0,10,1.0,1.0,0,1,1,1,0.9490514
+Advik Goel,Advik Grel,1,advik goel,advik grel,0.6322367176560606,0.85421336,0.96,0,1,0.3333333333333333,0.9,0,1,1,1,0.83993727
+Advik Goel,AdvikGoel,1,advik goel,advi kgoel,0.750401055851606,0.59954727,0.98,0,2,0.0,0.9,0,0,0,1,0.8680282
+Devika Saini,DevikaSaini,1,devika saini,devik asaini,0.7245626619354392,0.6808981,0.9833333333333333,0,2,0.0,0.5,0,0,0,1,0.96760833
+Ishaan Badal,Badal Ishaan,1,ishaan badal,badal ishaan,1.0,0.9757364,0.6111111111111112,0,10,1.0,1.0,0,1,1,1,0.9556395
+Ishaan Badal,Iwhaan Badal,1,ishaan badal,iwhaan badal,0.7464701533564123,0.8370409,0.9499999999999998,0,1,0.3333333333333333,0.92,0,1,1,1,0.6383032
+Ishaan Badal,IshaanBadal,1,ishaan badal,ishaa nbadal,0.6326292598462635,0.54642135,0.9833333333333333,0,2,0.0,0.5,0,0,0,1,0.9663262
+Hemangini Baria,Baria Hemangini,1,hema ngini baria,baria hema ngini,1.0000000000000002,0.9914794,0.7467948717948718,0,12,1.0,1.0,0,1,1,1,0.9607168
+Hemangini Baria,Hemanginb Baria,1,hema ngini baria,hema nginb baria,0.838710340651655,0.89771646,0.9483333333333334,0,1,0.5,0.94,0,1,1,1,0.66922307
+Hemangini Baria,HemanginiBaria,1,hema ngini baria,hemangi nibaria,0.5273120783793637,0.58467656,0.9608333333333333,0,3,0.0,0.58,0,1,1,1,0.84499717
+Saumya Padmanabhan,Saumna Padmanabhan,1,saumya padma nabhan,saumna padma nabhan,0.748310463844981,0.9581418,0.9789473684210526,0,1,0.5,0.95,0,1,1,1,0.93612355
+Saumya Padmanabhan,SaumyaPadmanabhan,1,saumya padma nabhan,saumyapa dmanabhan,0.6686067363391758,0.69567674,0.9783625730994151,0,3,0.0,0.7,0,0,0,1,0.9003323
+Theodore Saha,Saha Theodore,1,theo dore saha,saha theo dore,1.0,0.97947735,0.7056277056277057,0,10,1.0,1.0,0,1,1,1,0.95731527
+Theodore Saha,TheodoreSaha,1,theo dore saha,theodo resaha,0.49128106474804145,0.6819811,0.9703296703296703,0,3,0.0,0.81,0,0,0,1,0.8352872
+Bachittar Goyal,Bachittar Gobal,1,bach ittar goyal,bach ittar gobal,0.6960246533965098,0.93407476,0.975,0,1,0.5,0.94,0,1,1,1,0.8922949
+Bachittar Goyal,BachittarGoyal,1,bach ittar goyal,bachitt argoyal,0.6171912061890082,0.57027483,0.9741666666666667,0,3,0.0,0.65,0,1,0,1,0.91106963
+Vedika Iyer,Vedvka Iyer,1,vedika iyer,vedvka iyer,0.7003137174352562,0.8971978,0.9109090909090909,0,1,0.3333333333333333,0.91,0,1,1,1,0.6282594
+Vedika Iyer,VedikaIyer,1,vedika iyer,vedik aiyer,0.6774802957368737,0.84614307,0.9818181818181818,0,2,0.0,0.91,0,0,0,1,0.86950755
+Balvan Manne,Manne Balvan,1,balvan manne,manne balvan,1.0000000000000004,0.96712047,0.6111111111111112,0,10,1.0,1.0,0,1,1,1,0.9556395
+Balvan Manne,Balvan Mande,1,balvan manne,balvan mande,0.6966981895552233,0.7212386,0.9666666666666666,0,1,0.3333333333333333,0.92,0,1,1,1,0.6830224
+Balvan Manne,BalvanManne,1,balvan manne,balva nmanne,0.7347423408419286,0.5410545,0.9833333333333333,0,2,0.0,0.92,0,0,0,1,0.8757161
+Sai Shenoy,Sai Shenny,1,sai shenoy,sai shenny,0.49432738952657346,0.83622414,0.96,1,1,0.3333333333333333,0.9,0,1,1,1,0.67094404
+Sai Shenoy,SaiShenoy,1,sai shenoy,sais henoy,0.6849549554777047,0.6931579,0.9766666666666667,0,2,0.0,0.5,0,0,1,1,0.9928316
+Yuvraj Ganesh,Ganesh Yuvraj,1,yuvraj ganesh,ganesh yuvraj,1.0000000000000002,0.9842967,0.4871794871794872,0,12,1.0,1.0,0,1,1,1,0.9720585
+Yuvraj Ganesh,Yuvfaj Ganesh,1,yuvraj ganesh,yuvfaj ganesh,0.7472635295585257,0.87399495,0.9641025641025641,0,1,0.3333333333333333,0.92,0,1,1,1,0.8525664
+Yuvraj Ganesh,YuvrajGanesh,1,yuvraj ganesh,yuvraj ganesh,1.0000000000000002,1.0000001,1.0,1,0,1.0,1.0,1,1,1,1,0.9952787
+Fiyaz Pathak,Pathak Fiyaz,1,fiyaz pathak,pathak fiyaz,1.0,0.9850073,0.47222222222222215,0,10,1.0,1.0,0,1,1,1,0.9556395
+Fiyaz Pathak,FiyazPathak,1,fiyaz pathak,fiyaz pathak,1.0,1.0000001,1.0,1,0,1.0,1.0,1,1,1,1,0.9952787
+Chavvi Gaba,Gaba Chavvi,1,chavvi gaba,gaba chavvi,1.0000000000000004,0.9731534,0.49242424242424243,0,10,1.0,1.0,0,1,1,1,0.9556395
+Chavvi Gaba,ChavviGaba,1,chavvi gaba,chavv igaba,0.7279973865284424,0.7746283,0.9818181818181818,0,2,0.0,0.91,0,0,0,1,0.853639
+Meghana Palla,Meghana Paxla,1,meg hana palla,meg hana paxla,0.59308531178628,0.9183481,0.9714285714285714,0,1,0.5,0.93,0,1,1,1,0.9023774
+Meghana Palla,MeghanaPalla,1,meg hana palla,meghan apalla,0.543510907622345,0.6374815,0.9474358974358974,0,3,0.0,0.52,0,0,0,1,0.6056907
+Vasana Ramaswamy,Ramaswamy Vasana,1,vasana rama swamy,rama swamy vasana,1.0000000000000004,0.98970187,0.788235294117647,0,12,1.0,1.0,0,1,1,1,0.9530182
+Vasana Ramaswamy,Vasafa Ramaswamy,1,vasana rama swamy,vasafa rama swamy,0.7635931425397088,0.8966734,0.9764705882352941,0,1,0.5,0.94,0,1,1,1,0.8888079
+Vasana Ramaswamy,VasanaRamaswamy,1,vasana rama swamy,vasanar amaswamy,0.6846516490149144,0.57934856,0.975735294117647,0,3,0.0,0.91,0,0,0,1,0.86852384
+Rayaan Nayak,Nayak Rayaan,1,rayaan nayak,nayak rayaan,1.0,0.97599876,0.7555555555555555,0,6,1.0,1.0,0,1,1,1,0.81363165
+Rayaan Nayak,RayaanNayak,1,rayaan nayak,rayaa nnayak,0.7192502354020256,0.65824866,0.9833333333333333,0,2,0.0,0.92,0,0,1,1,0.8827937
+Qasim Sama,Qasgm Sama,1,qasim sama,qasgm sama,0.6443961209184911,0.8165864,0.9533333333333333,0,1,0.3333333333333333,0.9,0,1,1,1,0.64719474
+Qasim Sama,QasimSama,1,qasim sama,qasi msama,0.716337287456532,0.74152863,0.98,0,2,0.0,0.5,0,0,0,1,0.9662212
+Arjun Nadkarni,ArjunjNadkarni,1,arjun nadk arni,arjunjn adkarni,0.5676797291736504,0.7875344,0.959047619047619,0,3,0.0,0.53,0,0,1,1,0.9426088
+Arjun Nadkarni,ArjunNadkarni,1,arjun nadk arni,arjunn adkarni,0.5801872859587162,0.7834019,0.9723809523809525,0,3,0.0,0.55,0,0,1,1,0.9849726
+Chakrika Viswanathan,Viswanathan Chakrika,1,chak rika viswa nathan,viswa nathan chak rika,1.0,0.9701437,0.7687400318979266,0,20,1.0,1.0,0,1,1,1,0.97299296
+Chakrika Viswanathan,ChakrikaViswanathan,1,chak rika viswa nathan,chakrikav iswanathan,0.5223945099703029,0.4594344,0.9518181818181819,0,4,0.0,0.62,0,0,0,1,0.64702153
+Damini Dhawan,Dhawan Damini,1,damini dhawan,dhawan damini,1.0,0.98691165,0.782051282051282,0,8,1.0,1.0,0,1,1,1,0.9387504
+Damini Dhawan,DaminikDhawan,1,damini dhawan,damini kdhawan,0.9056064251843151,0.7848916,0.9857142857142858,0,1,0.3333333333333333,0.96,0,1,1,1,0.77013224
+Damini Dhawan,DaminiDhawan,1,damini dhawan,damini dhawan,1.0,1.0,1.0,1,0,1.0,1.0,1,1,1,1,0.9952787
+Unnati Sekhon,Uynati Sekhon,1,unnati sekhon,uynati sekhon,0.7585822080329939,0.8037208,0.9538461538461539,1,1,0.3333333333333333,0.92,0,1,1,1,0.96435666
+Unnati Sekhon,UnnatiSekhon,1,unnati sekhon,unnati sekhon,0.9999999999999999,1.0000001,1.0,1,0,1.0,1.0,1,1,1,1,0.9952787
+Unnati Sekhon,Unn4t1 53kh0n,1,unnati sekhon,unnt khn,0.3391698497649345,0.5220314,0.9102564102564102,0,5,0.0,0.76,0,0,0,1,0.7030426
+Gautam Rout,Gautau Rout,1,gautam rout,gautau rout,0.8327600114408674,0.91215086,0.9236363636363636,0,1,0.3333333333333333,0.91,0,1,1,1,0.7014508
+Gautam Rout,GautamRout,1,gautam rout,gauta mrout,0.7587199229817105,0.652501,0.9818181818181818,0,2,0.0,0.91,0,0,0,1,0.85848844
+Hema Raman,Hema Ramkn,1,hema raman,hema ramkn,0.6262956604183668,0.70369387,0.96,0,1,0.3333333333333333,0.9,0,1,1,1,0.5993509
+Hema Raman,HemaRaman,1,hema raman,hema raman,1.0000000000000002,1.0,1.0,1,0,1.0,1.0,1,1,1,1,0.9952787
+Umang Sahota,Sahota Umang,1,umang sahota,sahota umang,1.0,0.9899006,0.47222222222222215,0,11,1.0,1.0,0,1,1,1,0.9705325
+Umang Sahota,Uiang Sahota,1,umang sahota,uiang sahota,0.83531789829241,0.8752735,0.9499999999999998,0,1,0.3333333333333333,0.92,0,1,1,1,0.64705205
+Umang Sahota,UmangSahota,1,umang sahota,umang sahota,1.0,1.0,1.0,1,0,1.0,1.0,1,1,1,1,0.9952787
+Nachiket Bahri,Bahri Nachiket,1,nach iket bahri,bahri nach iket,1.0000000000000002,0.9865492,0.7572649572649572,0,12,1.0,1.0,0,1,1,1,0.9624939
+Nachiket Bahri,NachiketBahri,1,nach iket bahri,nachik etbahri,0.6327587991181409,0.45097145,0.9723809523809525,0,3,0.0,0.69,0,0,0,1,0.9303425
+Hemangini Ramesh,Ramesh Hemangini,1,hema ngini ramesh,ramesh hema ngini,1.0000000000000002,0.97037894,0.7394957983193278,0,14,1.0,1.0,0,1,1,1,0.9716987
+Hemangini Ramesh,Htmangini Ramesh,1,hema ngini ramesh,htma ngini ramesh,0.7337321495878527,0.83925307,0.9647058823529412,0,1,0.5,0.94,0,1,1,1,0.7978363
+Hemangini Ramesh,HemanginiRamesh,1,hema ngini ramesh,hemangi niramesh,0.542554171668161,0.7482982,0.9632352941176471,0,3,0.0,0.91,0,0,1,1,0.65585816
+Garima Khurana,GarimaKhurana,1,garima khu rana,garima khurana,0.7982170504421523,0.7664063,0.9866666666666667,0,1,0.25,0.97,0,1,1,1,0.960027
+Arjun Sur,Sur Arjun,1,arjun sur,sur arjun,1.0,0.96069443,0.5703703703703704,0,8,1.0,1.0,0,1,1,1,0.9302087
+Arjun Sur,Arjun sur,1,arjun sur,arjun sur,1.0,1.0000001,1.0,1,0,1.0,1.0,1,1,1,1,0.9952787
+Arjun Sur,ArjunSur,1,arjun sur,arju nsur,0.653493114075705,0.3786155,0.9777777777777777,0,2,0.0,0.89,0,1,0,1,0.90760183
+Kabir Doshi,Doshi Kabir,1,kabir doshi,doshi kabir,1.0,0.98427135,0.5151515151515151,0,10,1.0,1.0,0,1,1,1,0.9556395
+Kabir Doshi,Kabib Doshi,1,kabir doshi,kabib doshi,0.7467777916965077,0.73662937,0.9636363636363636,0,1,0.3333333333333333,0.91,0,1,1,1,0.7775529
+Kabir Doshi,KabirDoshi,1,kabir doshi,kabir doshi,1.0,1.0,1.0,1,0,1.0,1.0,1,1,1,1,0.9952787
+Samaksh Sule,SamakshSule,1,sam aksh sule,samak shsule,0.49129832619611646,0.67551327,0.9626068376068376,0,3,0.0,0.64,0,1,1,1,0.8829613
+Alka Chauhan,Chauhan Alka,1,alka cha uhan,cha uhan alka,1.0,0.98688054,0.7459207459207459,0,9,1.0,1.0,0,1,1,1,0.9541831
+Alka Chauhan,AlkaChauhan,1,alka cha uhan,alkac hauhan,0.5102729956511938,0.7081542,0.967948717948718,0,3,0.0,0.88,0,0,0,1,0.8255737
+Jonathan Goda,Goda Jonathan,1,jona than goda,goda jona than,1.0,0.9662614,0.7380952380952381,0,10,1.0,1.0,0,1,1,1,0.9567724
+Jonathan Goda,Jonathan Gkda,1,jona than goda,jona than gkda,0.6366653015365847,0.76876205,0.9714285714285714,0,1,0.5,0.93,0,1,1,1,0.73366576
+Jonathan Goda,JonathanGoda,1,jona than goda,jonath angoda,0.6916076718300742,0.48136532,0.9703296703296703,0,3,0.0,0.81,0,0,0,1,0.919092
+Harinakshi Soman,HarinakshiSoman,1,harin akshi soman,harinak shisoman,0.5634339504910715,0.609899,0.975735294117647,0,3,0.0,0.67,0,0,1,1,0.8152909
+Mohini Baria,MohiniBaria,1,mohini baria,mohin ibaria,0.7199796426222888,0.5473875,0.9833333333333333,0,2,0.0,0.92,0,0,0,1,0.88428736
+Ayushman Sharma,AyushmanSharma,1,ayus hman sharma,ayushma nsharma,0.6209214579171272,0.5942339,0.9608333333333333,0,3,0.0,0.9,0,0,0,1,0.6994865
+Dalbir Garde,DalbirGarde,1,dalbir garde,dalbi rgarde,0.7438063840760487,0.55280465,0.9833333333333333,0,2,0.0,0.92,0,0,0,1,0.8757161
+Anusha Ganesh,Ganesh Anusha,1,anusha ganesh,ganesh anusha,1.0000000000000004,0.9834284,0.7461538461538462,0,6,1.0,1.0,0,1,1,1,0.81363165
+Anusha Ganesh,AnushaGanesh,1,anusha ganesh,anusha ganesh,1.0000000000000004,1.0,1.0,1,0,1.0,1.0,1,1,1,1,0.9952787
+Elijah Tak,ElijahTak,1,elijah tak,elij ahtak,0.5451106889560057,0.39585146,0.98,0,2,0.0,0.5,0,1,0,1,0.9557121
+Ishanvi Raval,Ishanvr Raval,1,ish anvi raval,ish anvr raval,0.7060001697484144,0.8368969,0.956043956043956,0,1,0.5,0.93,0,1,1,1,0.6615663
+Ishanvi Raval,IshanviRaval,1,ish anvi raval,ishanv iraval,0.5370800680403525,0.4133663,0.9474358974358974,0,3,0.0,0.59,0,0,1,1,0.6418231
+Jairaj Karnik,Karnik Jairaj,1,jairaj karnik,karnik jairaj,1.0,0.96685016,0.7128205128205128,0,10,1.0,1.0,0,1,1,1,0.95731527
+Jairaj Karnik,Jairjj Karnik,1,jairaj karnik,jairjj karnik,0.7692350256833017,0.92884123,0.9358974358974359,1,1,0.3333333333333333,0.92,0,1,1,1,0.9933769
+Jairaj Karnik,JairajKarnik,1,jairaj karnik,jairaj karnik,1.0,1.0,1.0,1,0,1.0,1.0,1,1,1,1,0.9952787
+Wyatt Gola,Gola Wyatt,1,wyatt gola,gola wyatt,1.0000000000000002,0.95713353,0.5166666666666667,0,10,1.0,1.0,0,1,1,1,0.9494502
+Wyatt Gola,WyattGola,1,wyatt gola,wyat tgola,0.6825173625688135,0.27399912,0.98,0,2,0.0,0.9,0,0,0,1,0.857819
+Jairaj Jaggi,Jairaj oaggi,1,jairaj jaggi,jairaj oaggi,0.8055571301039484,0.75433326,0.9666666666666666,0,1,0.3333333333333333,0.92,0,1,1,1,0.7953103
+Jairaj Jaggi,JairajJaggi,1,jairaj jaggi,jaira jjaggi,0.7967807749724298,0.752116,0.9833333333333333,0,2,0.0,0.58,0,0,1,1,0.9858143
+Ladli Vaidya,Ladli Vaidga,1,ladli vaidya,ladli vaidga,0.7563268404106935,0.91119236,0.9666666666666666,0,1,0.3333333333333333,0.92,0,1,1,1,0.8855401
+Ladli Vaidya,LadliVaidya,1,ladli vaidya,ladli vaidya,1.0,1.0,1.0,1,0,1.0,1.0,1,1,1,1,0.9952787
+Simon Baria,SimonBaria,1,simon baria,simon baria,1.0,1.0,1.0,1,0,1.0,1.0,1,1,1,1,0.9952787
+Gaurang Golla,Golla Gaurang,1,gau rang golla,golla gau rang,0.9999999999999997,0.98766494,0.7623376623376624,0,12,1.0,1.0,0,1,1,1,0.9624939
+Quincy Handa,QuincyHanda,1,quincy handa,quinc yhanda,0.7237170447652008,0.39742577,0.9833333333333333,0,2,0.0,0.5,0,0,0,1,0.95972633
+Jonathan Nath,Nath Jonathan,1,jona than nath,nath jona than,1.0,0.9658414,0.8571428571428571,0,9,1.0,1.0,0,1,1,1,0.93991375
+Jonathan Nath,Jonathan Njth,1,jona than nath,jona than njth,0.8661673891787446,0.7964413,0.9714285714285714,0,1,0.5,0.93,0,1,1,1,0.74944526
+Jonathan Nath,JonathanNath,1,jona than nath,jonath annath,0.6881684423148635,0.5548632,0.9703296703296703,0,3,0.0,0.59,0,0,0,1,0.95104223
+Idika Choudhry,Choudhry Idika,1,idika chou dhry,chou dhry idika,1.0000000000000002,0.9428835,0.6707070707070706,0,12,1.0,1.0,0,1,1,1,0.9617198
+Idika Choudhry,Idika Choudhgy,1,idika chou dhry,idika chou dhgy,0.764401776287615,0.91327864,0.9733333333333334,0,1,0.5,0.93,0,1,1,1,0.8903135
+Idika Choudhry,IdikaChoudhry,1,idika chou dhry,idikac houdhry,0.6506148750691301,0.5857326,0.9723809523809525,0,3,0.0,0.9,0,0,0,1,0.860565
+Wriddhish Setty,Setty Wriddhish,1,wrid dhish setty,setty wrid dhish,1.0,0.97933847,0.6401515151515151,0,12,1.0,1.0,0,1,1,1,0.96645975
+Wriddhish Setty,WriddhishSetty,1,wrid dhish setty,wriddhi shsetty,0.6333154293639787,0.4109339,0.9608333333333333,0,3,0.0,0.77,0,0,1,1,0.65566164
+Nirja Bandi,Bandi Nirja,1,nirja bandi,bandi nirja,1.0000000000000002,0.99076766,0.6147186147186147,0,10,1.0,1.0,0,1,1,1,0.9556395
+Nirja Bandi,Nirja Btndi,1,nirja bandi,nirja btndi,0.7962019772027382,0.72070557,0.9636363636363636,0,1,0.3333333333333333,0.91,0,1,1,1,0.7491056
+Nirja Bandi,NirjaBandi,1,nirja bandi,nirja bandi,1.0000000000000002,1.0000001,1.0,1,0,1.0,1.0,1,1,1,1,0.9952787
+Rachita Atwal,Atwal Rachita,1,rac hita atwal,atwal rac hita,1.0,0.98823375,0.7936507936507936,0,12,1.0,1.0,0,1,1,1,0.9530182
+Rachita Atwal,RachitanAtwal,1,rac hita atwal,rachit anatwal,0.5989361441877673,0.6548562,0.9307692307692308,0,3,0.0,0.64,0,0,1,1,0.8480061
+Rachita Atwal,RachitaAtwal,1,rac hita atwal,rachit aatwal,0.5944378896470927,0.666005,0.9474358974358974,0,3,0.0,0.67,0,0,1,1,0.5963364
+Garima Rajan,Rajan Garima,1,garima rajan,rajan garima,1.0,0.98291767,0.626984126984127,0,10,1.0,1.0,0,1,1,1,0.9703789
+Garima Rajan,GarimaRajan,1,garima rajan,garim arajan,0.7306487890090207,0.6531574,0.9833333333333333,0,2,0.0,0.5,0,0,0,1,0.9717559
+Qasim Srinivas,Qasem Srinivas,1,qasim srin ivas,qasem srin ivas,0.7138732918117929,0.9521438,0.9022222222222223,1,1,0.5,0.93,0,1,1,1,0.99171877
+Qasim Srinivas,QasimSrinivas,1,qasim srin ivas,qasims rinivas,0.6812747117939529,0.5756946,0.9723809523809525,0,3,0.0,0.62,0,1,0,1,0.925759
+Rishi Hora,Hora Rishi,1,rishi hora,hora rishi,1.0,0.9780104,0.5666666666666667,0,9,1.0,1.0,0,1,1,1,0.9529856
+Rishi Hora,Ryshi Hora,1,rishi hora,ryshi hora,0.6505227329680451,0.805118,0.9066666666666667,1,1,0.3333333333333333,0.9,0,1,1,1,0.9279173
+Rishi Hora,RishiHora,1,rishi hora,rish ihora,0.6387144205072368,0.5270381,0.98,0,2,0.0,0.9,0,0,0,1,0.8652184
+Rajata Kata,Rajfta Kata,1,rajata kata,rajfta kata,0.6417084065374673,0.769573,0.8875757575757576,0,1,0.3333333333333333,0.91,0,1,1,1,0.5796307
+Rajata Kata,RajataKata,1,rajata kata,rajat akata,0.6898373096137274,0.6325489,0.9818181818181818,0,2,0.0,0.91,0,0,0,1,0.88008726
+Tristan Kata,TristanKata,1,tri stan kata,trist ankata,0.42670184467691713,0.6495707,0.9626068376068376,0,3,0.0,0.64,0,0,0,1,0.886495
+Rachana Sant,Sant Rachana,1,rac hana sant,sant rac hana,1.0,0.9836467,0.7459207459207459,0,8,1.0,1.0,0,1,1,1,0.94014233
+Rachana Sant,Rochana Sant,1,rac hana sant,roc hana sant,0.5632338869132588,0.8347145,0.8538461538461539,1,1,0.5,0.92,0,1,1,1,0.940302
+Rachana Sant,RachanaSant,1,rac hana sant,racha nasant,0.4807624183539321,0.4661044,0.9626068376068376,0,3,0.0,0.56,0,0,0,1,0.92927593
+Faraj Dugar,Dugar Faraj,1,faraj dugar,dugar faraj,1.0000000000000002,0.9909677,0.5858585858585857,0,8,1.0,1.0,0,1,1,1,0.9386014
+Faraj Dugar,Faraj Dvgar,1,faraj dugar,faraj dvgar,0.6264159339853704,0.7077652,0.9636363636363636,0,1,0.3333333333333333,0.91,0,1,1,1,0.5993509
+Faraj Dugar,FarajDugar,1,faraj dugar,faraj dugar,1.0000000000000002,1.0,1.0,1,0,1.0,1.0,1,1,1,1,0.9952787
+Yachana Sampath,Yachana Sampoth,1,yac hana sam path,yac hana sam poth,0.734307403287307,0.83974445,0.9764705882352941,1,1,0.6,0.94,0,1,1,1,0.98614967
+Yachana Sampath,YachanaSampath,1,yac hana sam path,yachana sampath,0.5813041238413873,0.6251606,0.941437908496732,0,2,0.0,0.56,0,0,1,1,0.78729486
+Anya Seshadri,Anya Sesoadri,1,anya sesh adri,anya seso adri,0.8378190497460283,0.9435717,0.9714285714285714,0,1,0.5,0.93,0,1,1,1,0.913487
+Anya Seshadri,AnyaSeshadri,1,anya sesh adri,anyase shadri,0.5400574882764461,0.6697143,0.9703296703296703,0,3,0.0,0.59,0,0,1,1,0.9698877
+Ati Suri,Suri Ati,1,ati suri,suri ati,1.0,0.9710281,0.5833333333333334,0,6,1.0,1.0,0,1,1,1,0.8187672
+Ati Suri,AtiSuri,1,ati suri,ati suri,1.0,1.0,1.0,1,0,1.0,1.0,1,1,1,1,0.9952787
+Indrajit Ray,IndrajitRay,1,indr ajit ray,indra jitray,0.5313528895208182,0.42165262,0.967948717948718,0,3,0.0,0.64,0,0,0,1,0.9405408
+Jeremiah Loyal,Loyal Jeremiah,1,jere miah loyal,loyal jere miah,0.9999999999999999,0.99151886,0.7000000000000001,0,12,1.0,1.0,0,1,1,1,0.96121216
+Jeremiah Loyal,Jeremiah Liyal,1,jere miah loyal,jere miah liyal,0.7562026166372765,0.63628197,0.9733333333333334,1,1,0.5,0.93,0,1,1,1,0.9600386
+Jeremiah Loyal,JeremiahLoyal,1,jere miah loyal,jeremi ahloyal,0.518741135285026,0.43737113,0.9723809523809525,0,3,0.0,0.55,0,0,0,1,0.95154065
+Tripti Batta,Tripti Batha,1,tripti batta,tripti batha,0.7801385944150365,0.74506474,0.9666666666666666,0,1,0.3333333333333333,0.92,0,1,1,1,0.78185874
+Tripti Batta,TriptiBatta,1,tripti batta,tript ibatta,0.6761999386175825,0.6170683,0.9833333333333333,0,2,0.0,0.92,0,0,0,1,0.8703844
+Omya Sachdev,OmyaSachdev,1,omya sac hdev,omyas achdev,0.6108270514531244,0.672649,0.967948717948718,0,3,0.0,0.8,0,0,0,1,0.89288896
+Qasim Korpal,QasimKorpal,1,qasim korpal,qasim korpal,1.0,1.0000002,1.0,1,0,1.0,1.0,1,1,1,1,0.9952787
+Amol Patla,AmolPatla,1,amol patla,amol patla,1.0000000000000002,1.0,1.0,1,0,1.0,1.0,1,1,1,1,0.9952787
+Bimala Ramanathan,Ramanathan Bimala,1,bimala raman athan,raman athan bimala,1.0000000000000002,0.9865868,0.7555555555555555,0,12,1.0,1.0,0,1,1,1,0.9607168
+Bimala Ramanathan,Bimaea Ramanathan,1,bimala raman athan,bimaea raman athan,0.7581865639129224,0.9350256,0.9777777777777777,0,1,0.5,0.94,0,1,1,1,0.93612355
+Bimala Ramanathan,BimalaRamanathan,1,bimala raman athan,bimalara manathan,0.6624791486712669,0.54025793,0.9771241830065359,0,3,0.0,0.63,0,0,0,1,0.91909665
+Falan Nori,Nori Falan,1,falan nori,nori falan,1.0,0.9783149,0.5166666666666667,0,10,1.0,1.0,0,1,1,1,0.9556395
+Falan Nori,FalanNori,1,falan nori,fala nnori,0.7208780857574758,0.6822994,0.98,0,2,0.0,0.9,0,0,1,1,0.8661976
+Daksha Oza,Oza Daksha,1,daksha oza,oza daksha,0.9999999999999998,0.98788387,0.7416666666666667,0,8,1.0,1.0,0,1,1,1,0.94014233
+Daksha Oza,Dakcha Oza,1,daksha oza,dakcha oza,0.7095411784265954,0.8166157,0.9533333333333333,1,1,0.3333333333333333,0.9,0,1,1,1,0.97462714
+Daksha Oza,DakshaOza,1,daksha oza,daks haoza,0.6556001061045613,0.42564702,0.98,0,2,0.0,0.9,0,0,0,1,0.8652184
+Aahana Patla,AahanaPatla,1,aahana patla,aahan apatla,0.8236457626329269,0.6870825,0.9833333333333333,0,2,0.0,0.92,0,0,0,1,0.8559672

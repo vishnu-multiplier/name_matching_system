@@ -1,6 +1,5 @@
 import pandas as pd
 import numpy as np
-import re
 import jellyfish
 import joblib
 import logging
@@ -13,6 +12,7 @@ from xgboost import XGBClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import classification_report, accuracy_score
 from tqdm import tqdm
+from utility import clean_name, jaccard_similarity,is_complete_overlap_with_empty, same_gender, is_abbreviation
 
 # Setup logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -20,68 +20,6 @@ logger = logging.getLogger(__name__)
 
 tqdm.pandas()
 
-def clean_name(name):
-    """Cleans and normalizes names by removing titles, professions, and location phrases."""
-    if pd.isnull(name):
-        return ""
-
-    name = name.lower()
-    name = re.sub(r'\.(?=\w)', '. ', name)
-
-    # Step 1: Remove common name prefixes
-    prefixes = {'dr', 'mr', 'mrs', 'ms', 'miss', 'prof', 'sir', 'madam', 'shri', 'smt', 'doctor', 'professor'}
-    words = name.split()
-    while words and words[0].rstrip('.') in prefixes:
-        words.pop(0)
-    name = ' '.join(words)
-
-    # Step 2: Remove pattern-based profession + location
-    profession_keywords = [
-        'doctor', 'surgeon', 'dentist', 'physician', 'consultant',
-        'orthopedic', 'cardiologist', 'neurologist', 'pediatrician','pulmonologist',
-        'dermatologist', 'psychiatrist', 'ophthalmologist', 'ent specialist',
-        'urologist', 'gastroenterologist', 'oncologist', 'gynecologist'
-    ]
-
-    # Remove patterns like 'doctor in delhi', 'surgeon from pune'
-    for prof in profession_keywords:
-        name = re.sub(rf'{prof}\s+(in|from|at)\s+\w+', '', name)
-        name = re.sub(rf'{prof}\s+\w+', '', name)  # 'surgeon delhi'
-        name = re.sub(rf'\b{prof}\b', '', name)    # lone profession
-
-    # Step 3: Normalize remaining text
-    name = re.sub(r'\b([a-z])\.', r'\1', name)  # A. → A
-    name = re.sub(r"[^a-z\s'-]", '', name)
-    name = re.sub(r'\s+', ' ', name).strip()
-
-    # Step 4: Deduplicate consecutive words
-    tokens = name.split()
-    final_tokens = [t for i, t in enumerate(tokens) if i == 0 or t != tokens[i - 1]]
-
-    return ' '.join(final_tokens)
-
-
-
-def longest_common_substring(s1, s2):
-    m = [[0]*(1+len(s2)) for _ in range(1+len(s1))]
-    longest = 0
-    for i in range(1, 1+len(s1)):
-        for j in range(1, 1+len(s2)):
-            if s1[i-1] == s2[j-1]:
-                m[i][j] = m[i-1][j-1] + 1
-                longest = max(longest, m[i][j])
-            else:
-                m[i][j] = 0
-    return longest
-
-def jaccard_similarity(a, b):
-    set1, set2 = set(a.split()), set(b.split())
-    return len(set1 & set2) / len(set1 | set2) if set1 | set2 else 0.0
-
-def ngram_overlap(a, b, n=3):
-    ngrams = lambda s: {s[i:i+n] for i in range(len(s)-n+1)} if len(s) >= n else set()
-    ng1, ng2 = ngrams(a), ngrams(b)
-    return len(ng1 & ng2) / len(ng1 | ng2) if ng1 | ng2 else 0.0
 
 def compute_features(df, tfidf, sbert):
     logger.info("Computing features...")
@@ -104,15 +42,14 @@ def compute_features(df, tfidf, sbert):
     # Other string similarity features
     logger.info("Computing string similarity metrics...")
     df['jaro_sim'] = df.progress_apply(lambda row: jellyfish.jaro_winkler_similarity(row['name1_clean'], row['name2_clean']), axis=1)
-    df['levenshtein'] = df.progress_apply(lambda row: jellyfish.levenshtein_distance(row['name1_clean'], row['name2_clean']), axis=1)
-    df['first_letter_match'] = (df['name1_clean'].str[0] == df['name2_clean'].str[0]).astype(int)
-    df['len_diff'] = (df['name1_clean'].str.len() - df['name2_clean'].str.len()).abs()
-    df['soundex_match'] = df.progress_apply(lambda row: int(jellyfish.soundex(row['name1_clean']) == jellyfish.soundex(row['name2_clean'])), axis=1)
     df['metaphone_match'] = df.progress_apply(lambda row: int(jellyfish.metaphone(row['name1_clean']) == jellyfish.metaphone(row['name2_clean'])), axis=1)
+    df['Levenshtein'] = df.progress_apply(lambda row: jellyfish.levenshtein_distance(row['name1_clean'], row['name2_clean']), axis=1)
     df['token_set_ratio'] = df.progress_apply(lambda row: fuzz.token_set_ratio(row['name1_clean'], row['name2_clean']) / 100.0, axis=1)
-    df['lcs'] = df.progress_apply(lambda row: longest_common_substring(row['name1_clean'], row['name2_clean']), axis=1)
     df['jaccard'] = df.progress_apply(lambda row: jaccard_similarity(row['name1_clean'], row['name2_clean']), axis=1)
-    df['ngram_overlap'] = df.progress_apply(lambda row: ngram_overlap(row['name1_clean'], row['name2_clean']), axis=1)
+    df['complete_overlap'] = df.progress_apply(lambda row: is_complete_overlap_with_empty(row['name1_clean'], row['name2_clean']), axis=1)
+    df['similar_gender'] = df.progress_apply(lambda row: same_gender(row['name1_clean'], row['name2_clean']),axis=1)
+    df['is_abbreviation'] = df.progress_apply(lambda row: int(is_abbreviation(row['name1_clean'], row['name2_clean'])), axis=1)
+
 
     return df
 
@@ -130,9 +67,9 @@ def prepare_data(df):
 
     # Select features
     feature_cols = [
-        'cosine_sim', 'sbert_sim', 'jaro_sim', 'levenshtein',
-        'first_letter_match', 'len_diff', 'soundex_match', 'lcs',
-        'metaphone_match', 'token_set_ratio', 'jaccard', 'ngram_overlap'
+        'cosine_sim', 'sbert_sim','Levenshtein', 'jaro_sim',
+        'metaphone_match', 'token_set_ratio', 'jaccard',
+        'complete_overlap','similar_gender','is_abbreviation'
     ]
 
     X = df[feature_cols]
@@ -152,7 +89,6 @@ def train_model(X_train, y_train, tfidf, sbert):
         n_estimators=100,
         max_depth=5,
         learning_rate=0.1,
-        use_label_encoder=False,
         eval_metric='logloss',
         random_state=42
     )
