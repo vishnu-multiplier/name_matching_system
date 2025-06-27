@@ -7,8 +7,8 @@ from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.preprocessing import normalize
 from fuzzywuzzy import fuzz
 from tqdm import tqdm
-from train import compute_features
-from utility import clean_name, jaccard_similarity,is_complete_overlap_with_empty, same_gender, is_abbreviation
+import xgboost as xgb
+from utility import clean_name, jaccard_similarity, same_gender, is_abbreviation
 
 
 # Setup logging
@@ -37,13 +37,12 @@ def compute_features(df, tfidf, sbert):
     print("🔢 Calculating other string similarity features...")
     jaro_sim = df.progress_apply(lambda row: jellyfish.jaro_winkler_similarity(clean_name(row['name1']), clean_name(row['name2'])), axis=1)
     metaphone_match = df.progress_apply(lambda row: int(jellyfish.metaphone(clean_name(row['name1'])) == jellyfish.metaphone(clean_name(row['name2']))), axis=1)
+    soundex_match = df.progress_apply(lambda row: int(jellyfish.soundex(clean_name(row['name1'])) == jellyfish.soundex(clean_name(row['name2']))), axis=1)
     Lavenshtein = df.progress_apply(lambda row: jellyfish.levenshtein_distance(clean_name(row['name1']), clean_name(row['name2'])), axis=1)
     jaccard = df.progress_apply(lambda row: jaccard_similarity(clean_name(row['name1']), clean_name(row['name2'])), axis=1)
     token_set_ratio = df.progress_apply(lambda row: fuzz.token_set_ratio(clean_name(row['name1']), clean_name(row['name2'])) / 100.0, axis=1)
-    complete_overlap = df.progress_apply(lambda row: is_complete_overlap_with_empty(clean_name(row['name1']),clean_name(row['name2'])), axis=1)
-    similar_gender = df.progress_apply(lambda row: same_gender(clean_name(row['name1']), clean_name(row['name2'])), axis=1);
-    abbrevation = df.progress_apply(lambda row: int(is_abbreviation(clean_name(row['name1']), clean_name(row['name2']))), axis=1)
-
+    similar_gender = df.progress_apply(lambda row: same_gender(clean_name(row['name1']), clean_name(row['name2'])), axis=1)
+    abbreviation = df.progress_apply(lambda row: int(is_abbreviation(clean_name(row['name1']), clean_name(row['name2']))), axis=1)
 
     features = pd.DataFrame({
         'name1_clean': name1_clean,
@@ -52,12 +51,12 @@ def compute_features(df, tfidf, sbert):
         'sbert_sim': sbert_sim,
         'jaro_sim': jaro_sim,
         'metaphone_match': metaphone_match,
+        'soundex_match': soundex_match,
         'Levenshtein': Lavenshtein,
         'jaccard': jaccard,
         'token_set_ratio': token_set_ratio,
-        'complete_overlap': complete_overlap,
-        'similar_gender':similar_gender,
-        'is_abbreviation': abbrevation
+        'similar_gender': similar_gender,
+        'is_abbreviation': abbreviation
     })
 
     df = pd.concat([df, features], axis=1)
@@ -69,10 +68,13 @@ def load_models():
     """Load all required models for prediction."""
     try:
         logger.info("Loading models...")
-        model = joblib.load("models/xgb_model.pkl")
+        model = xgb.Booster()
+        model.load_model("models/xgb_rf_model.json")
+
         tfidf = joblib.load("models/tfidf_vectorizer.pkl")
         sbert = joblib.load("models/sbert_model.pkl")
         features = joblib.load("models/features_used.pkl")
+
         logger.info("Models loaded successfully")
         return model, tfidf, sbert, features
     except Exception as e:
@@ -84,24 +86,23 @@ def predict_matches(df, model, tfidf, sbert, features):
     try:
         logger.info("Computing features for prediction...")
         df = compute_features(df, tfidf, sbert)
-        
-        logger.info("Making predictions...")
 
-        X = df[features].values  
-        predictions = model.predict(X)
-        probabilities = model.predict_proba(X)[:, 1]
-        
+        logger.info("Making predictions...")
+        dtest = xgb.DMatrix(df[features])  # Pass DataFrame, not .values
+        probabilities = model.predict(dtest)
+        predictions = (probabilities > 0.5).astype(int)
+
         df['predicted_match'] = predictions
         df['match_probability'] = probabilities
-        
+
         return df
     except Exception as e:
         logger.error(f"Error during prediction: {e}")
         raise
 
+
 def separate_results(df):
     """Separate results into matched and unmatched names."""
-    
     try:
         logger.info("Separating results...")
         matched = df[df['predicted_match'] == 1].copy()
@@ -114,27 +115,23 @@ def separate_results(df):
 
 def main():
     try:
-        # Load test data
         logger.info("Loading test data...")
         df = pd.read_csv("new_data.csv")
-        
-        # Load models
+
         model, tfidf, sbert, features = load_models()
-        
-        # Make predictions
+
         results_df = predict_matches(df, model, tfidf, sbert, features)
-        
-        # Save complete results
+
         logger.info("Saving complete results...")
         results_df.to_csv("new_data_output.csv", index=False)
-        
-        # Separate and save matched/unmatched results
+
         matched, unmatched, message = separate_results(results_df)
         matched.to_csv("predicted_1.csv", index=False)
         unmatched.to_csv("predicted_0.csv", index=False)
-        
+
+        logger.info(message)
         logger.info("Results saved successfully!")
-        
+
     except Exception as e:
         logger.error(f"An error occurred: {e}", exc_info=True)
         raise

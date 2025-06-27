@@ -2,67 +2,28 @@
 import pandas as pd
 import re
 
-
-
-def attempt_safe_split(word):
-    """Try to split joined words based on vowel-consonant or mid-point patterns."""
-    if len(word) < 7 or ' ' in word:
-        return word
-
-    # Heuristic: Try mid-point split (best-effort)
-    mid = len(word) // 2
-    for offset in range(1, 4):
-        i = mid - offset
-        if word[i].isalpha() and word[i+1].isalpha():
-            return word[:i+1] + ' ' + word[i+1:]
-    return word
-
 def clean_name(name):
-    """Cleans and normalizes names, and splits joined names like 'ravikumar' -> 'ravi kumar' without using name lists."""
-    if pd.isnull(name):
+    """Basic cleaning: lowercase, remove prefixes, professions, special characters."""
+    if not isinstance(name, str) or pd.isnull(name):
         return ""
 
-    name = name.lower()
-    name = re.sub(r'\.(?=\w)', '. ', name)
+    name = name.lower().strip()
 
-    # Step 1: Remove common prefixes
     prefixes = {'dr', 'mr', 'mrs', 'ms', 'miss', 'prof', 'sir', 'madam', 'shri', 'smt', 'doctor', 'professor'}
-    words = name.split()
-    while words and words[0].rstrip('.') in prefixes:
-        words.pop(0)
-    name = ' '.join(words)
+    words = [w for w in name.split() if w.rstrip('.') not in prefixes]
 
-    # Step 2: Remove profession + location patterns
-    profession_keywords = [
-        'doctor', 'surgeon', 'dentist', 'physician', 'consultant',
+    profession_keywords = (
+        'doctor', 'surgeon', 'dentist', 'physician', 'consultant','general',
         'orthopedic', 'cardiologist', 'neurologist', 'pediatrician', 'pulmonologist',
         'dermatologist', 'psychiatrist', 'ophthalmologist', 'ent specialist',
         'urologist', 'gastroenterologist', 'oncologist', 'gynecologist'
-    ]
-    for prof in profession_keywords:
-        name = re.sub(rf'{prof}\s+(in|from|at)\s+\w+', '', name)
-        name = re.sub(rf'{prof}\s+\w+', '', name)
-        name = re.sub(rf'\b{prof}\b', '', name)
+    )
+    name = ' '.join(words)
+    pattern = r'\b(?:' + '|'.join(profession_keywords) + r')\b.*?(?=\b[a-z]+\b|$)'
+    name = re.sub(pattern, '', name)
 
-    # Step 3: Normalize and clean
-    name = re.sub(r'\b([a-z])\.', r'\1', name)
-    name = re.sub(r"[^a-z\s'-]", '', name)
-    name = re.sub(r'\s+', ' ', name).strip()
-
-    # Step 4: Attempt safe split of joined names (e.g., "ravikumar" -> "ravi kumar")
-    tokens = name.split()
-    split_tokens = []
-    for token in tokens:
-        if len(token) >= 7 and ' ' not in token:
-            split_token = attempt_safe_split(token)
-            split_tokens.extend(split_token.split())
-        else:
-            split_tokens.append(token)
-
-    # Step 5: Deduplicate consecutive words
-    final_tokens = [t for i, t in enumerate(split_tokens) if i == 0 or t != split_tokens[i - 1]]
-
-    return ' '.join(final_tokens)
+    name = re.sub(r"[^a-z\s]", '', name)
+    return re.sub(r'\s+', ' ', name).strip()
 
 
 def longest_common_substring(s1, s2):
@@ -86,31 +47,6 @@ def ngram_overlap(a, b, n=3):
     ng1, ng2 = ngrams(a), ngrams(b)
     return len(ng1 & ng2) / len(ng1 | ng2) if ng1 | ng2 else 0.0
 
-def is_complete_overlap_with_empty(name1, name2):
-    if not name1 or not name2:
-        return 0
-
-    name1 = name1.strip().lower()
-    name2 = name2.strip().lower()
-
-    # Check exact containment
-    if name1 in name2:
-        leftover = name2.replace(name1, "").strip()
-        if not leftover:
-            return 1
-        if not name1.replace(leftover, "").strip():
-            return 1
-    elif name2 in name1:
-        leftover = name1.replace(name2, "").strip()
-        if not leftover:
-            return 1
-        if not name2.replace(leftover, "").strip():
-            return 1
-
-    return 0
-
-
-
 
 def is_valid_name(name):
     """Valid name is at least 2 characters (to exclude initials)."""
@@ -132,40 +68,88 @@ def get_gender_label(name_parts):
     else:
         return 'mixed'
 
-def same_gender(name_str1, name_str2):
-    parts1 = [n.strip().lower() for n in name_str1.split() if is_valid_name(n)]
-    parts2 = [n.strip().lower() for n in name_str2.split() if is_valid_name(n)]
-    
-    set1 = set(parts1)
-    set2 = set(parts2)
-    common_parts = set1.intersection(set2)
+def same_gender(name1: str, name2: str) -> int:
+    tokens1 = [w for w in name1.split() if len(w) > 1]
+    tokens2 = [w for w in name2.split() if len(w) > 1]
 
-    # Rule 1: Shared name indicates same gender
-    for name in common_parts:
-        if is_female_name(name) or not is_female_name(name):
-            return 1  # same person or same gender
+    common = set(tokens1) & set(tokens2)
 
-    # Rule 2: No common parts, use gender logic
-    gender1 = get_gender_label(parts1)
-    gender2 = get_gender_label(parts2)
+    # If there's a common token that ends in 'a' or 'i', likely same gender
+    for token in common:
+        if token[-1] in {'a', 'i'}:
+            return 1
 
-    if 'mixed' in (gender1, gender2) or 'unknown' in (gender1, gender2):
-        return 0
-    return 1 if gender1 == gender2 else 0
+    # If both names have majority of words ending in 'a' or 'i', assume female
+    female1 = sum(w[-1] in {'a', 'i'} for w in tokens1)
+    female2 = sum(w[-1] in {'a', 'i'} for w in tokens2)
+
+    if female1 > 0 and female2 > 0:
+        return 1
+
+    return 0
+
 
 def is_abbreviation(name1, name2):
-    def get_initials(tokens):
-        return set(token[0] for token in tokens if len(token) > 0 and token not in {'a', 'i'})
+    """
+    Checks if one name is a valid abbreviation of the other.
 
-    tokens1 = name1.split()
-    tokens2 = name2.split()
+    Rules:
+      1. Identify which input is the “long” name vs. the “short” name
+         by comparing total non-space characters.
+      2. Only attempt an abbreviation check if the short name has 2–4 tokens.
+      3. For each token in the short name:
+         - If it’s one character → match it as an INITIAL (first letter) 
+           against an unused word in the long name.
+         - If it’s longer than one character → it must match an UNUSED
+           word in the long name exactly (full-word match).
+      4. No long-name word can be reused for two tokens.
+      5. Order of short-name tokens doesn’t matter (jumbled allowed).
+      6. Comparison is case-insensitive.
 
-    short, long = (tokens1, tokens2) if len(tokens1) <= len(tokens2) else (tokens2, tokens1)
+    Returns:
+        1 if valid abbreviation, else 0.
+    """
+    # 1. Normalize & split
+    t1 = name1.lower().split()
+    t2 = name2.lower().split()
 
-    if not (2 <= len(short) <= 4):
+    # 2. Decide long vs. short by total character count
+    len1 = sum(len(tok) for tok in t1)
+    len2 = sum(len(tok) for tok in t2)
+    if len1 >= len2:
+        long_tokens, short_tokens = t1, t2
+    else:
+        long_tokens, short_tokens = t2, t1
+
+    # 3. Enforce token-count constraint
+    if not (2 <= len(short_tokens) <= 4):
         return 0
 
-    short_initials = get_initials(short)
-    long_initials = get_initials(long)
+    # 4. Prepare “used” flags so no long word is reused
+    used = [False] * len(long_tokens)
 
-    return int(short_initials.issubset(long_initials))
+    # 5. Match each short token
+    for st in short_tokens:
+        matched = False
+
+        # full-word case
+        if len(st) > 1:
+            for i, lt in enumerate(long_tokens):
+                if not used[i] and st == lt:
+                    used[i] = True
+                    matched = True
+                    break
+
+        # initial case
+        else:  # single character
+            for i, lt in enumerate(long_tokens):
+                if not used[i] and lt.startswith(st):
+                    used[i] = True
+                    matched = True
+                    break
+
+        if not matched:
+            return 0  # fail fast if any token can't match
+
+    return 1
+

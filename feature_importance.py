@@ -10,7 +10,7 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 logger = logging.getLogger(__name__)
 
 # ----------- Paths -----------
-MODEL_PATH = "models/xgb_model.pkl"
+MODEL_PATH = "models/xgb_rf_model.json"
 FEATURES_PATH = "models/features_used.pkl"
 OUTPUT_IMAGE = "features/feature_importance_all.png"
 OUTPUT_EXCEL = "features/feature_importance_all.xlsx"
@@ -18,14 +18,14 @@ OUTPUT_EXCEL = "features/feature_importance_all.xlsx"
 # ----------- Load Model and Features -----------
 def load_model_and_features():
     logger.info("Loading model and features...")
-    model = joblib.load(MODEL_PATH)
+    model = xgb.Booster()
+    model.load_model(MODEL_PATH)
     features = joblib.load(FEATURES_PATH)
     logger.info("Loaded model and features successfully.")
     return model, features
 
 # ----------- Plot and Save Feature Importances -----------
 def plot_all_importances(model, feature_names):
-    booster = model.get_booster()
     importance_types = ['gain', 'weight', 'cover']
     importance_data = {}
 
@@ -34,7 +34,7 @@ def plot_all_importances(model, feature_names):
 
     for i, imp_type in enumerate(importance_types):
         logger.info(f"Generating importance by: {imp_type}")
-        imp_dict = booster.get_score(importance_type=imp_type)
+        imp_dict = model.get_score(importance_type=imp_type)
         imp_series = pd.Series(imp_dict)
 
         # Align with expected feature order
@@ -48,11 +48,13 @@ def plot_all_importances(model, feature_names):
         axes[i].grid(True)
 
     plt.tight_layout(rect=(0, 0.03, 1, 0.95))
+    os.makedirs(os.path.dirname(OUTPUT_IMAGE), exist_ok=True)
     plt.savefig(OUTPUT_IMAGE)
     plt.show()
     logger.info(f"Combined feature importance plot saved to: {OUTPUT_IMAGE}")
 
     # Save all importance values to one Excel file (multiple sheets)
+    os.makedirs(os.path.dirname(OUTPUT_EXCEL), exist_ok=True)
     with pd.ExcelWriter(OUTPUT_EXCEL) as writer:
         for imp_type, df in importance_data.items():
             df.to_frame(name=f"{imp_type}_importance").to_excel(writer, sheet_name=imp_type)
@@ -69,3 +71,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

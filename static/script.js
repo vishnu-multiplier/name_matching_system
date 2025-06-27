@@ -6,7 +6,6 @@ tabs.forEach(tab => {
   tab.addEventListener('click', () => {
     const selectedTab = tab.getAttribute('data-tab');
 
-    // Set aria-selected and styling
     tabs.forEach(t => {
       t.setAttribute('aria-selected', t === tab ? 'true' : 'false');
       t.classList.toggle('border-blue-600', t === tab);
@@ -14,20 +13,18 @@ tabs.forEach(tab => {
       t.classList.toggle('text-gray-600', t !== tab);
     });
 
-    // Show/hide tab content
     tabContents.forEach(content => {
       content.classList.toggle('hidden', content.id !== selectedTab);
     });
   });
 });
 
-// Drag & Drop + File Input handler helper
+// Drag & Drop + File Input helper
 function setupDragDrop(areaId, inputId, fileNameId) {
   const dropArea = document.getElementById(areaId);
   const fileInput = document.getElementById(inputId);
   const fileNameDisplay = document.getElementById(fileNameId);
 
-  // Highlight on dragover
   dropArea.addEventListener('dragover', e => {
     e.preventDefault();
     dropArea.classList.add('dragover');
@@ -47,12 +44,8 @@ function setupDragDrop(areaId, inputId, fileNameId) {
     }
   });
 
-  // **Add mouse click handler**
-  dropArea.addEventListener('click', e => {
-    fileInput.click();
-  });
+  dropArea.addEventListener('click', () => fileInput.click());
 
-  // Keyboard accessible
   dropArea.addEventListener('keydown', e => {
     if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault();
@@ -60,7 +53,6 @@ function setupDragDrop(areaId, inputId, fileNameId) {
     }
   });
 
-  // When user selects file via dialog
   fileInput.addEventListener('change', updateFileName);
 
   function updateFileName() {
@@ -72,20 +64,16 @@ function setupDragDrop(areaId, inputId, fileNameId) {
   }
 }
 
-
 setupDragDrop('trainDropArea', 'trainFile', 'trainFileName');
 setupDragDrop('testDropArea', 'testFile', 'testFileName');
 
-// Utility: display error
 function displayError(element, message) {
   element.textContent = `Error: ${message}`;
 }
 
-
-// Handle Train form submission
+// Train form submission
 document.getElementById('trainForm').addEventListener('submit', async e => {
   e.preventDefault();
-
   const trainFileInput = document.getElementById('trainFile');
   if (trainFileInput.files.length === 0) {
     showToast('Please select a training CSV file.', 'information');
@@ -101,38 +89,25 @@ document.getElementById('trainForm').addEventListener('submit', async e => {
   trainingProgress.textContent = 'Starting training...';
 
   try {
-    const response = await fetch('/train', {
-      method: 'POST',
-      body: formData,
-    });
-
-    const contentType = response.headers.get('content-type') || '';
-    if (!contentType.includes('application/json')) {
-      const text = await response.text();
-      displayError(trainingProgress, `Unexpected response format:\n${text}`);
-      return;
-    }
-
+    const response = await fetch('/train', { method: 'POST', body: formData });
     const data = await response.json();
-    console.log('Training response:', data);
 
     if (response.ok && data?.status === 'success') {
       trainingProgress.textContent = data.message || 'Training completed successfully!';
     } else {
-      displayError(trainingProgress, data?.error || 'Unexpected response format.');
+      displayError(trainingProgress, data?.error || 'Unexpected response.');
     }
   } catch (error) {
     displayError(trainingProgress, error.message);
   }
 });
 
-// Handle Test form submission
+// Test form submission with Excel handling
 document.getElementById('testForm').addEventListener('submit', async e => {
   e.preventDefault();
-
   const testFileInput = document.getElementById('testFile');
   if (testFileInput.files.length === 0) {
-    showToast('Please select a test CSV file.', 'information');
+    showToast('Please select a test file.', 'information');
     return;
   }
 
@@ -143,184 +118,214 @@ document.getElementById('testForm').addEventListener('submit', async e => {
   const testingProgress = document.getElementById('testingProgress');
   const downloadSection = document.getElementById('downloadSection');
   const downloadLinks = document.getElementById('downloadLinks');
+  const sheetSelectionSection = document.getElementById('sheetSelectionSection');
+  const sheetDropdown = document.getElementById('sheetDropdown');
 
   testingOutput.classList.remove('hidden');
   downloadSection.classList.add('hidden');
+  sheetSelectionSection.classList.add('hidden');
   testingProgress.textContent = 'Starting testing...';
 
   try {
-    const response = await fetch('/test', {
-      method: 'POST',
-      body: formData,
-    });
-
-    const contentType = response.headers.get('content-type') || '';
-    if (!contentType.includes('application/json')) {
-      const text = await response.text();
-      displayError(testingProgress, `Unexpected response format:\n${text}`);
-      return;
-    }
-
+    const response = await fetch('/test', { method: 'POST', body: formData });
     const data = await response.json();
-    console.log('Testing response:', data);
 
     if (response.ok && data?.status === 'success') {
-      let finalMessage = data.message || 'Testing completed successfully!';
-
-      // ⛔️ Handle merging error gracefully
-      if (data?.merging?.status === 'error') {
-        finalMessage += `\n Merging failed: ${data.merging.error_message}`;
-        showToast(`${data.merging.error_message}`, 'warning');
-      }
-
-      testingProgress.textContent = finalMessage;
-
-      // ✅ Display download links if available
-      if (data.downloads && Object.keys(data.downloads).length > 0) {
-        downloadSection.classList.remove('hidden');
-        downloadLinks.innerHTML = '';
-        for (const [name, url] of Object.entries(data.downloads)) {
-          const link = document.createElement('a');
-          link.href = url;
-          link.download = '';
-          link.target = '_blank';
-          link.rel = 'noopener noreferrer';
-          link.className = 'inline-block bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md transition';
-          link.textContent = name;
-          downloadLinks.appendChild(link);
-        }
-      } else {
-        downloadSection.classList.add('hidden');
-        downloadLinks.innerHTML = '';
-      }
+      handleTestSuccess(data);
+    } else if (response.ok && data?.status === 'excel') {
+      displaySheetSelection(data);
     } else {
-      displayError(testingProgress, data?.error || 'Unexpected response format.');
+      displayError(testingProgress, data?.error || 'Unexpected response.');
     }
   } catch (error) {
     displayError(testingProgress, error.message);
   }
 });
 
+function handleTestSuccess(data) {
+  const testingProgress = document.getElementById('testingProgress');
+  const downloadSection = document.getElementById('downloadSection');
+  const downloadLinks = document.getElementById('downloadLinks');
 
-document.getElementById('clearCacheButton').addEventListener('click', function() {
-  
-    fetch('/clear_cache', { method: 'GET' })
-      .then(response => response.json())
-      .then(data => {
-        if (data.status === 'success') {
-          showToast(data.message, 'success');
+  let finalMessage = data.message || 'Testing completed successfully!';
+  if (data?.merging?.status === 'error') {
+    finalMessage += `\n Merging failed: ${data.merging.message}`;
+    showToast(data.merging.message, 'warning');
+  }
+  testingProgress.textContent = finalMessage;
+
+  if (data.downloads && Object.keys(data.downloads).length > 0) {
+    downloadSection.classList.remove('hidden');
+    downloadLinks.innerHTML = '';
+    for (const [name, url] of Object.entries(data.downloads)) {
+      const link = document.createElement('a');
+      link.href = url;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.className = 'inline-block bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md transition';
+      link.textContent = name;
+      downloadLinks.appendChild(link);
+    }
+  } else {
+    downloadSection.classList.add('hidden');
+    downloadLinks.innerHTML = '';
+  }
+}
+
+function displaySheetSelection(data) {
+  const sheetSelectionSection = document.getElementById('sheetSelectionSection');
+  const sheetDropdown = document.getElementById('sheetDropdown');
+  const testingProgress = document.getElementById('testingProgress');
+
+  sheetDropdown.innerHTML = '';
+  data.sheets.forEach(sheet => {
+    const option = document.createElement('option');
+    option.value = sheet;
+    option.textContent = sheet;
+    sheetDropdown.appendChild(option);
+  });
+
+  sheetSelectionSection.classList.remove('hidden');
+  testingProgress.textContent = 'Please select a sheet to process.';
+
+  document.getElementById('processSheetButton').onclick = () => {
+    const selectedSheet = sheetDropdown.value;
+    if (!selectedSheet) {
+      showToast('Please select a sheet.', 'information');
+      return;
+    }
+    processSelectedSheet(data.filename, selectedSheet);
+  };
+}
+
+async function processSelectedSheet(filename, sheetName) {
+  const testingProgress = document.getElementById('testingProgress');
+  const sheetSelectionSection = document.getElementById('sheetSelectionSection');
+  const downloadSection = document.getElementById('downloadSection');
+  const downloadLinks = document.getElementById('downloadLinks');
+
+  sheetSelectionSection.classList.add('hidden');
+  testingProgress.textContent = 'Processing selected sheet...';
+  downloadSection.classList.add('hidden');
+
+  const formData = new FormData();
+  formData.append('filename', filename);
+  formData.append('sheet_name', sheetName);
+
+  try {
+    const response = await fetch('/process_excel', { method: 'POST', body: formData });
+    const data = await response.json();
+
+    if (response.ok && data?.status === 'success') {
+      handleTestSuccess(data);
+    } else {
+      displayError(testingProgress, data?.error || 'Unexpected response.');
+    }
+  } catch (error) {
+    displayError(testingProgress, error.message);
+  }
+}
+
+// Clear cache
+document.getElementById('clearCacheButton').addEventListener('click', () => {
+  fetch('/clear_cache', { method: 'GET' })
+    .then(res => res.json())
+    .then(data => {
+      showToast(data.message, data.status === 'success' ? 'success' : 'danger');
+    })
+    .catch(() => {
+      showToast('An error occurred while clearing the cache.', 'danger');
+    });
+});
+
+// Train tab login control
+let isTrainLoggedIn = false;
+document.addEventListener('DOMContentLoaded', () => {
+  const tabsNav = document.getElementById('tabsNav');
+  const tabContents = document.querySelectorAll('.tab-content');
+  const trainLockDialog = document.getElementById('trainLockDialog');
+  const trainTabContent = document.getElementById('trainTabContent');
+
+  // Show login dialog if train tab is active and not logged in
+  const activeTab = document.querySelector('.tab-button[aria-selected="true"]');
+  if (activeTab && activeTab.getAttribute('data-tab') === 'train' && !isTrainLoggedIn) {
+    trainLockDialog.style.display = 'flex';
+    trainTabContent.style.display = 'none';
+  }
+
+  // Always hide trainTabContent if not logged in
+  if (!isTrainLoggedIn) {
+    trainLockDialog.style.display = 'flex';
+    trainTabContent.style.display = 'none';
+  }
+
+  tabsNav.addEventListener('click', e => {
+    if (e.target.classList.contains('tab-button')) {
+      const tab = e.target.getAttribute('data-tab');
+
+      document.querySelectorAll('.tab-button').forEach(btn => {
+        btn.classList.toggle('text-blue-600', btn.getAttribute('data-tab') === tab);
+        btn.classList.toggle('border-blue-600', btn.getAttribute('data-tab') === tab);
+      });
+
+      tabContents.forEach(section => {
+        section.classList.toggle('hidden', section.id !== tab);
+      });
+
+      if (tab === 'train') {
+        if (!isTrainLoggedIn) {
+          trainLockDialog.style.display = 'flex';
+          trainTabContent.style.display = 'none';
         } else {
-          showToast(data.message, 'danger');
-        }
-      })
-      .catch(error => {
-        console.error('Error clearing cache:', error);
-        showToast('An error occurred while clearing the cache.','danger');
-      });
-  
-})
-
-
-    // Track login state for train tab
-    let isTrainLoggedIn = false;
-
-    document.addEventListener('DOMContentLoaded', function() {
-      const trainTab = document.getElementById('train-tab');
-      const tabContents = document.querySelectorAll('.tab-content');
-      const tabsNav = document.getElementById('tabsNav');
-      const trainLockDialog = document.getElementById('trainLockDialog');
-      const trainTabContent = document.getElementById('trainTabContent');
-
-      // Show login dialog only for train tab if not logged in
-      tabsNav.addEventListener('click', function(e) {
-        if (e.target.classList.contains('tab-button')) {
-          const tab = e.target.getAttribute('data-tab');
-          // Switch tabs
-          document.querySelectorAll('.tab-button').forEach(btn => {
-            btn.classList.toggle('text-blue-600', btn.getAttribute('data-tab') === tab);
-            btn.classList.toggle('border-blue-600', btn.getAttribute('data-tab') === tab);
-            btn.classList.toggle('text-gray-600', btn.getAttribute('data-tab') !== tab);
-            btn.classList.toggle('border-transparent', btn.getAttribute('data-tab') !== tab);
-          });
-          tabContents.forEach(section => {
-            section.classList.toggle('hidden', section.id !== tab);
-          });
-
-          // If train tab, check login
-          if (tab === 'train') {
-            if (!isTrainLoggedIn) {
-              trainLockDialog.style.display = 'flex';
-              trainTabContent.style.display = 'none';
-            } else {
-              trainLockDialog.style.display = 'none';
-              trainTabContent.style.display = '';
-            }
-          }
-        }
-      });
-
-      // On page load, if train tab is default, show lock if not logged in
-      if (!isTrainLoggedIn && document.getElementById('train').classList.contains('tab-content') && !document.getElementById('train').classList.contains('hidden')) {
-        trainLockDialog.style.display = 'flex';
-        trainTabContent.style.display = 'none';
-      }
-
-      // Train login form logic
-      document.getElementById('trainLoginForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        const username = document.getElementById('train-username').value.trim();
-        const password = document.getElementById('train-password').value.trim();
-        if (username === 'admin' && password === 'admin') {
-          isTrainLoggedIn = true;
           trainLockDialog.style.display = 'none';
           trainTabContent.style.display = '';
-        } else {
-          document.getElementById('trainLoginError').classList.remove('hidden');
         }
-      });
-    });
+      } else {
+        // Hide login dialog and train content when not on train tab
+        trainLockDialog.style.display = 'none';
+        trainTabContent.style.display = 'none';
+      }
+    }
+  });
 
+  document.getElementById('trainLoginForm').addEventListener('submit', e => {
+    e.preventDefault();
+    const username = document.getElementById('train-username').value.trim();
+    const password = document.getElementById('train-password').value.trim();
+    if (username === 'admin' && password === 'admin') {
+      isTrainLoggedIn = true;
+      trainLockDialog.style.display = 'none';
+      trainTabContent.style.display = '';
+    } else {
+      document.getElementById('trainLoginError').classList.remove('hidden');
+    }
+  });
+});
 
-
-  // Custom Toast Notification
-
-let icon = {
-    success:
-    '<span class="material-symbols-outlined">task_alt</span>',
-    danger:
-    '<span class="material-symbols-outlined">error</span>',
-    warning:
-    '<span class="material-symbols-outlined">warning</span>',
-    info:
-    '<span class="material-symbols-outlined">info</span>',
+// Toast Notification
+const icon = {
+  success: '<span class="material-symbols-outlined">task_alt</span>',
+  danger: '<span class="material-symbols-outlined">error</span>',
+  warning: '<span class="material-symbols-outlined">warning</span>',
+  information: '<span class="material-symbols-outlined">info</span>',
 };
 
-const showToast = (
-    message,
-    toastType,
-    duration = 10000) => {
-    if (
-        !Object.keys(icon).includes(toastType))
-        toastType = "info";
+function showToast(message, toastType = 'information', duration = 10000) {
+  if (!icon[toastType]) toastType = 'information';
 
-    let box = document.createElement("div");
-    box.classList.add(
-        "toast", `toast-${toastType}`);
-    box.innerHTML = ` <div class="toast-content-wrapper">
-                      <div class="toast-icon">
-                      ${icon[toastType]}
-                      </div>
-                      <div class="toast-message">${message}</div>
-                      <div class="toast-progress"></div>
-                      </div>`;
-    duration = duration;
-    box.querySelector(".toast-progress").style.animationDuration =
-            `${duration / 10000}s`;
+  const box = document.createElement('div');
+  box.classList.add('toast', `toast-${toastType}`);
+  box.innerHTML = `
+    <div class="toast-content-wrapper">
+      <div class="toast-icon">${icon[toastType]}</div>
+      <div class="toast-message">${message}</div>
+      <div class="toast-progress"></div>
+    </div>
+  `;
+  box.querySelector('.toast-progress').style.animationDuration = `${duration / 1000}s`;
 
-    let toastAlready = 
-        document.body.querySelector(".toast");
-    if (toastAlready) {
-        toastAlready.remove();
-    }
+  const existing = document.querySelector('.toast');
+  if (existing) existing.remove();
 
-    document.body.appendChild(box)};
+  document.body.appendChild(box);
+}
